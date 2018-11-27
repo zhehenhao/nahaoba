@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_sanji"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="经典三级" />
+        <item
+            android:id="@+id/nav_toupai"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="偷拍自拍" />
+        <item
+            android:id="@+id/nav_oumei"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="欧美性爱" />
+        <item
+            android:id="@+id/nav_rihan"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="日韩情色" />
+
+
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Share" />
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Send" />
+        </menu>
+    </item>
+
+</menu>

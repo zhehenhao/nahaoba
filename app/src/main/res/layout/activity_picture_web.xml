@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".picture.PictureWebActivity">
+    <ScrollView
+        android:layout_width="368dp"
+        android:layout_height="551dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:id="@+id/guanggao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+            </LinearLayout>
+
+
+            <Button
+                android:id="@+id/tupian1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="图片一区" />
+
+            <Button
+                android:id="@+id/tupian2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="图片二区" />
+
+            <Button
+                android:id="@+id/tupian3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="图片三区" />
+
+            <LinearLayout
+                android:id="@+id/banner"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"></LinearLayout>
+
+            <Button
+                android:id="@+id/tupian4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="图片四区" />
+
+            <Button
+                android:id="@+id/tupian5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="图片五区" />
+
+            <Button
+                android:id="@+id/tupian6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="图片六区" />
+
+
+        </LinearLayout>>
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.MainActivity">
+    <ScrollView
+        android:layout_width="368dp"
+        android:layout_height="551dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:id="@+id/guanggao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/xfqu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="先锋区" />
+
+                    <Button
+                        android:id="@+id/kbqu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="快播区" />
+
+                    <Button
+                        android:id="@+id/tpqu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="图片区" />
+
+                    <Button
+                        android:id="@+id/lsjl"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="历史记录" />
+
+                    <Button
+                        android:id="@+id/search"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="搜索" />
+
+                    <Button
+                        android:id="@+id/help"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="帮助" />
+
+                    <Button
+                        android:id="@+id/gxyy"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="更新应用" />
+
+                    <Button
+                        android:id="@+id/xzsp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="下载视频" />
+
+                    <Button
+                        android:id="@+id/viptequan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="vip特权" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/xgqu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="西瓜区" />
+
+                    <Button
+                        android:id="@+id/zxqu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="在线视频" />
+
+                    <Button
+                        android:id="@+id/xsqu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="小说区" />
+
+                    <Button
+                        android:id="@+id/wdsc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="我的收藏" />
+
+                    <Button
+                        android:id="@+id/qchc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="清除缓存" />
+
+                    <Button
+                        android:id="@+id/fankui"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="反馈" />
+
+                    <Button
+                        android:id="@+id/bfxz"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="播放器下载" />
+
+                    <Button
+                        android:id="@+id/ktvip"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="开通vip" />
+
+                    <Button
+                        android:id="@+id/wode"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="我的" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/banner"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"></LinearLayout>
+
+        </LinearLayout>>
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>
