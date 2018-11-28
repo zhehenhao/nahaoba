@@ -8,12 +8,12 @@ import io.realm.Realm;
 import io.realm.RealmConfiguration;
 
 public class App extends Application {
-   public RealmConfiguration config;
+   public static RealmConfiguration config;
     @Override
     public void onCreate() {
         super.onCreate();
         Utils.init(this);
-      initRealm();
+         initRealm();
 
     }
 

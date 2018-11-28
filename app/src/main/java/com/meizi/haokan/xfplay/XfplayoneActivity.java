@@ -216,7 +216,7 @@ public class XfplayoneActivity extends BaseXfplaylistActivity {
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_xfplayone, container, false);
             initView(rootView);
-            requestdata();
+
             return rootView;
         }
 

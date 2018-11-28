@@ -188,12 +188,14 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:text="@string/xfplayvideoshuoming"/>
-        <Button
-            android:id="@+id/btn_collect"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/holo_orange_dark"
-            android:text="@string/btncollect" />
+
+    <Button
+        android:id="@+id/btn_collect"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_orange_dark"
+        android:text="@string/btncollect"
+        android:visibility="gone" />
 
     <LinearLayout
         android:id="@+id/fuzhill"

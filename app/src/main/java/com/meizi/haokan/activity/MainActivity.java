@@ -5,6 +5,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
+import com.alibaba.fastjson.JSON;
+import com.blankj.utilcode.util.LogUtils;
+import com.meizi.haokan.Base.AppUpdataJsonObject;
 import com.meizi.haokan.Base.BaseActivity;
 import com.meizi.haokan.R;
 import com.meizi.haokan.online.OnlineWebActivity;
@@ -67,6 +70,15 @@ public  class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        AppUpdataJsonObject jsonObject=new AppUpdataJsonObject();
+        jsonObject.setAppname("这很好");
+        jsonObject.setVersion(11);
+        jsonObject.setDownloadurl("下载链接");
+        jsonObject.setImg("图片链接");
+        jsonObject.setForced(false);
+
+        LogUtils.e(JSON.toJSONString(jsonObject));
+
     }
 
     @OnClick({R.id.guanggao, R.id.xfqu, R.id.kbqu, R.id.tpqu, R.id.lsjl, R.id.search

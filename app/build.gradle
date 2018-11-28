@@ -59,6 +59,7 @@ dependencies {
     //jsoup解析html
     implementation 'org.jsoup:jsoup:1.11.3'
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-15'
+    implementation 'com.alibaba:fastjson:1.1.70.android'
 //    implementation  'com.github.Aspsine:IRecyclerView:0.0.7'
 
 

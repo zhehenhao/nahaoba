@@ -256,7 +256,7 @@ public class XfplaythreeActivity extends BaseXfplaylistActivity {
 //            TextView tv3=rootView.findViewById(R.id.tv3);
 //            tv3.setText("位置ss"+position);
             initView(rootView);
-            requestdata();
+
             return rootView;
         }
 

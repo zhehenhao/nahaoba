@@ -34,7 +34,7 @@ public class Xfweb2listJsoup extends BaseJsoup {
                 String  img         =pic.select("img").attr("src");
                 String  havema  =  con.select("ul > li:nth-child(4)").text().replace("状态：","");
                 String actor=con.select("ul > li:nth-child(1)").text().replace("主演：","");
-                String updatetime=con.select("ul > li:nth-child(3)").text().replace("时间：","");
+//                String updatetime=con.select("ul > li:nth-child(3)").text().replace("时间：","");
 
 //                LogUtils.eTag("视频名字",name);
 //                LogUtils.eTag("img",img);
@@ -45,7 +45,7 @@ public class Xfweb2listJsoup extends BaseJsoup {
                 video.setName(name);
                 video.setImage(img);
                 video.setXiangqingurl(xiangqingurl);
-                video.setUpdatatime(updatetime);
+
                 videoList.add(video);
             }
             LogUtils.e("抓取结束");

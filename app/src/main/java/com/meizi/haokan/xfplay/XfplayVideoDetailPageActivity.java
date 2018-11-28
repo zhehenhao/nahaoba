@@ -17,7 +17,9 @@ import android.widget.Toast;
 
 import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.LogUtils;
+import com.blankj.utilcode.util.TimeUtils;
 import com.blankj.utilcode.util.ToastUtils;
+import com.meizi.haokan.App;
 import com.meizi.haokan.Base.BaseActivity;
 import com.meizi.haokan.R;
 import com.meizi.haokan.jsoup.FindVideoListener;
@@ -36,6 +38,9 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cc.shinichi.library.ImagePreview;
 import cc.shinichi.library.bean.ImageInfo;
+import io.realm.Realm;
+import io.realm.RealmList;
+import io.realm.RealmResults;
 
 import static com.blankj.utilcode.util.AppUtils.getAppsInfo;
 
@@ -88,28 +93,44 @@ public class XfplayVideoDetailPageActivity extends BaseActivity {
     private String img;
     private Context mcontext;
 
-    private List<String> xfplays = new ArrayList<>();
+    private String xfplays ;
     private int webtype;
     final List<ImageInfo> imageInfoList = new ArrayList<>();
     private Random random;
-
+    Realm realm;
     private Video mvideo;
+
     private Handler uihandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             switch (msg.what) {
                 case 3001:
+                    mvideo = (Video) msg.obj;
+                    xfplays=mvideo.getXfplay();
                     initoneui();
                     break;
                 case 3002:
                     ToastUtils.showLong(msg.obj.toString());
                     break;
                 case 3003:
+                    mvideo = (Video) msg.obj;
+                    xfplays=mvideo.getXfplay();
                     initthreeui();
                     break;
                 case 3004:
 
+                    break;
+                case  3005:
+
+                    break;
+                case  3006:
+                    break;
+                case  3007:
+                    initui();
+                    break;
+                case  3008:
+                   startjsoupthread();
                     break;
 
             }
@@ -127,16 +148,42 @@ public class XfplayVideoDetailPageActivity extends BaseActivity {
         getData();
 
     }
-
+    String actor;
 
     public void getData() {
         webtype = getIntent().getIntExtra("web", 1);
         xiangqingye = getIntent().getStringExtra("xiangqingye");
         name = getIntent().getStringExtra("name");
         img = getIntent().getStringExtra("img");
-//        bofangye = getIntent().getStringExtra("bofangye");
         biaoti.setText(name);
         ImageLoaderUtils.display(this, xfxqimg, img);
+try {
+    realm =Realm.getInstance(App.config);
+    realm.executeTransactionAsync(new Realm.Transaction() {
+        @Override
+        public void execute(Realm realm) {
+
+            mvideo=realm.where(Video.class).equalTo("xiangqingurl",xiangqingye).findFirst();
+            if(mvideo==null){
+                LogUtils.e("没有找到");
+                Message message=new Message();
+                message.what=3008;
+                uihandler.sendMessage(message);
+            }else{
+                xfplays=mvideo.getXfplay();
+                LogUtils.e(mvideo.toString());
+                Message message=new Message();
+                message.what=3007;
+                uihandler.sendMessage(message);}
+        }
+    });}catch (Exception e){}finally {
+    realm.close();
+    realm=null;
+    }
+
+}
+
+    private void startjsoupthread(){
         switch (webtype) {
             case 1:
                 starttwothread();
@@ -148,19 +195,19 @@ public class XfplayVideoDetailPageActivity extends BaseActivity {
                 startthreethread();
                 break;
         }
-
-
     }
-
     private void starttwothread() {
         Xfweb2Jsoup thread = new Xfweb2Jsoup(xiangqingye);
         thread.setFindVideoListener(new FindVideoListener() {
             @Override
             public void onSucceed(Video video) {
-                mvideo = video;
+                saveVideo(video,false);
+                xfplays=video.getXfplay();
                 Message message = new Message();
                 message.what = 3001;
+                message.obj=video;
                 uihandler.sendMessage(message);
+
             }
 
             @Override
@@ -180,10 +227,13 @@ public class XfplayVideoDetailPageActivity extends BaseActivity {
         thread.setFindVideoListener(new FindVideoListener() {
             @Override
             public void onSucceed(Video video) {
-                mvideo = video;
+                saveVideo(video,false);
+                xfplays=video.getXfplay();
                 Message message = new Message();
                 message.what = 3003;
+                message.obj=video;
                 uihandler.sendMessage(message);
+
             }
 
             @Override
@@ -197,28 +247,37 @@ public class XfplayVideoDetailPageActivity extends BaseActivity {
         thread.start();
     }
 
-    private void initthreeui() {
-        if (mvideo != null) {
-            zhuyan.setText(mvideo.getActor());
-            xftype.setText(mvideo.getType());
-            diqu.setText(mvideo.getArea());
-            updatetime.setText(mvideo.getUpdatatime());
-            pingfen.setText("" + mvideo.getScore());
-            addbutton(mvideo.getXfplay());
-
+   private void  initui(){
+       switch (webtype) {
+            case 1:
+              case 2:
+          initoneui();
+                break;
+            case 3:
+            initthreeui();
+                break;
         }
+   }
+    private void initthreeui() {
+//        if (mvideo != null) {
+//            zhuyan.setText(actor);
+//            xftype.setText(mvideo.getType());
+//            diqu.setText(mvideo.getArea());
+//            updatetime.setText(mvideo.getUpdatatime());
+//            pingfen.setText("" + mvideo.getScore());
+            addbutton(xfplays);
+//        }
     }
 
+
     private void initoneui() {
-        if (mvideo != null) {
-            zhuyan.setText(mvideo.getActor());
-            xftype.setText(mvideo.getType());
-            addbutton(mvideo.getXfplay());
-            if(mvideo.getBigimg()!=null){
-                LogUtils.e(mvideo.getBigimg());
-            imageView.setVisibility(View.VISIBLE);
-            ImageLoaderUtils.display(this,imageView,mvideo.getBigimg());}
-        }
+        addbutton(xfplays);
+//            if(bigimg!=null){
+//                LogUtils.e(mvideo.getBigimg());
+//            imageView.setVisibility(View.VISIBLE);
+//            ImageLoaderUtils.display(this,imageView,mvideo.getBigimg());}
+
+//        }
     }
 
     private void addbutton(final String xfplay) {
@@ -295,7 +354,7 @@ public class XfplayVideoDetailPageActivity extends BaseActivity {
         return false;
     }
 
-    @OnClick({R.id.xfxqimg, R.id.xfbanner,R.id.imageView})
+    @OnClick({R.id.xfxqimg, R.id.xfbanner,R.id.imageView,R.id.btn_collect})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.xfxqimg:
@@ -304,7 +363,6 @@ public class XfplayVideoDetailPageActivity extends BaseActivity {
                  imageInfo.setOriginUrl(img);
                  imageInfoList.add(imageInfo);
                  ImagePreview.getInstance().setContext(this).setImageInfoList(imageInfoList).start();
-
                 break;
 
             case R.id.xfbanner:
@@ -317,8 +375,37 @@ public class XfplayVideoDetailPageActivity extends BaseActivity {
                  imageInfoList.add(imageInfo1);
                 ImagePreview.getInstance().setContext(this).setImageInfoList(imageInfoList).start();
                 break;
+            case R.id.btn_collect:
+
+                break;
         }
     }
+
+    private void saveVideo(final Video video, final boolean iscollect) {
+        LogUtils.e("保存抓取的对象开始");
+   try {
+       realm=Realm.getInstance(App.config);
+      video.setUpdatatime(TimeUtils.getNowDate().toString());
+       LogUtils.e("设置时间");
+      video.setIscollect(iscollect);
+       realm.executeTransaction(new Realm.Transaction() {
+           @Override
+           public void execute(Realm realm) {
+
+               Video  mvideo=realm.copyToRealmOrUpdate(video);
+               LogUtils.e("保存抓取的对象2");
+
+
+           }
+       });
+   }catch (Exception e){}finally {
+       LogUtils.e("关闭realm");
+       realm.close();
+       realm=null;
+   }
+
+    }
+
 
 
 }

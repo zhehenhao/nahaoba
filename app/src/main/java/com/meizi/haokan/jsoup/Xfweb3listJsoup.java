@@ -31,7 +31,7 @@ public class Xfweb3listJsoup extends BaseJsoup {
 //                String  pingfen     =e.select("a > span>span.fr").text();
                 String  img         =e.select("img").attr("abs:src").toString();
                 String  xiangqingurl =e.select("a.img_wrap").attr("abs:href").toString();
-                String  updatetime  =e.select("p").text();
+//                String  updatetime  =e.select("p").text();
 //                LogUtils.eTag("视频名字",name);
 //                LogUtils.eTag("img",img);
 //                LogUtils.eTag("详情页",xiangqingurl);
@@ -39,7 +39,7 @@ public class Xfweb3listJsoup extends BaseJsoup {
                 video.setName(name);
                 video.setImage(img);
                 video.setXiangqingurl(xiangqingurl);
-                video.setUpdatatime(updatetime);
+//                video.setUpdatatime(updatetime);
                videoList.add(video);
             }
             LogUtils.e("抓取结束");
