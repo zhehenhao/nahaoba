@@ -1,0 +1,12 @@
+<paths xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 这个下载路径也不可以修改，必须为GDTDOWNLOAD -->
+    <external-path name="gdt_sdk_download_path" path="GDTDOWNLOAD" />
+    <cache-path
+        name="apk1"
+        path="." />
+    <external-path
+        name="apk2"
+        path="." />
+    <external-cache-path name="cache" path="cache" />
+
+</paths>

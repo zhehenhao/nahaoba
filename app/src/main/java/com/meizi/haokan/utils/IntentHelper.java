@@ -37,7 +37,7 @@ public class IntentHelper {
         ToastUtils.showLong("将打开网页下载迅雷app，下载完成后记得安装哦，下载失败请自行从应用市场下载");
         Intent intent = new Intent();
         intent.setAction("android.intent.action.VIEW");
-        Uri content_url = Uri.parse("http://m.down.sandai.net/MobileThunder/Android_5.45.2.5080/thunder-5.45.2.5080-stable-release-OfficialSite_XunLeiProductCenter.apk");
+        Uri content_url = Uri.parse("http://m.down.sandai.net/mobile/OfficialSite_XunLeiProductCenter.apk");
         intent.setData(content_url);
         context.startActivity(intent);
     }

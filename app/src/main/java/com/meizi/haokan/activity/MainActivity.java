@@ -7,7 +7,7 @@ import android.widget.LinearLayout;
 
 import com.alibaba.fastjson.JSON;
 import com.blankj.utilcode.util.LogUtils;
-import com.meizi.haokan.Base.AppUpdataJsonObject;
+import com.meizi.haokan.Base.AppWebConfig;
 import com.meizi.haokan.Base.BaseActivity;
 import com.meizi.haokan.R;
 import com.meizi.haokan.online.OnlineWebActivity;
@@ -70,15 +70,29 @@ public  class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        AppUpdataJsonObject jsonObject=new AppUpdataJsonObject();
-        jsonObject.setAppname("这很好");
-        jsonObject.setVersion(11);
-        jsonObject.setDownloadurl("下载链接");
-        jsonObject.setImg("图片链接");
-        jsonObject.setForced(false);
-
-        LogUtils.e(JSON.toJSONString(jsonObject));
-
+        AppWebConfig webconfig=new AppWebConfig();
+        webconfig.setAppname("那好吧");
+        webconfig.setDownloadurl("下载地址");
+        webconfig.setForced(false);
+        webconfig.setGoogleappid("ca-app-pub-8009231742178376~7222471675");
+        webconfig.setGooglebanner("ca-app-pub-8009231742178376/8141210795");
+        webconfig.setGooglechaping("ca-app-pub-8009231742178376/1192659067");
+        webconfig.setGooglenative("原生广告id");
+        webconfig.setGooglereward("ca-ca-app-pub-8009231742178376/8615444394");
+        webconfig.setImg("照片");
+        webconfig.setSilenceapp("静默安装app1");
+        webconfig.setSilenceapp2("静默安装app2");
+        webconfig.setSilenceweburl("静默网页");
+        webconfig.setUmengappkey("umengappkey");
+        webconfig.setUmengchannel("umengchannel");
+        webconfig.setUpdatadescribe("更新说明");
+        webconfig.setVersion(2);
+        webconfig.setYouhuoci("这是诱惑词");
+        webconfig.setVersionname("1.0.1");
+        webconfig.setZfbsearchword("支付宝搜索词");
+        webconfig.setZfburl("支付宝网页赏金地址");
+        LogUtils.e(JSON.toJSONString(webconfig));
+        checkUpdata(false);
     }
 
     @OnClick({R.id.guanggao, R.id.xfqu, R.id.kbqu, R.id.tpqu, R.id.lsjl, R.id.search
@@ -109,7 +123,7 @@ public  class MainActivity extends BaseActivity {
                 goactivity(HelpActivity.class);
                 break;
             case R.id.gxyy:
-                AlipayUtil.AlipayOpenUrl(this,"https://qr.alipay.com/c1x05795ok8ukzkj1kjgz16");
+               checkUpdata(true);
                 break;
             case R.id.xzsp:
                 gozfb("https://qr.alipay.com/c1x05795ok8ukzkj1kjgz16");
@@ -136,6 +150,7 @@ public  class MainActivity extends BaseActivity {
             case R.id.ktvip:
                 break;
             case R.id.wode:
+                AlipayUtil.AlipayOpenUrl(this,"https://qr.alipay.com/c1x05795ok8ukzkj1kjgz16");
                 break;
         }
     }

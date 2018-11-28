@@ -300,14 +300,32 @@ try {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (havexfplayAPP()) {
-                    startxfplay(xfplay);
-                } else {
-                    IntentHelper.downxfplayapp(XfplayVideoDetailPageActivity.this);
-                }
+
             }
         });
         fuzhill.addView(button1);
+        final Button button2 = new Button(this);
+        button2.setText("分享到QQ");
+        button2.setBackgroundColor(Color.GREEN);
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               shareQQ(xfplay);
+            }
+        });
+        fuzhill.addView(button2);
+
+        fuzhill.addView(button1);
+        final Button button3 = new Button(this);
+        button3.setText("分享到其他");
+        button3.setBackgroundColor(Color.GREEN);
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                shareMsg("选择分享到",name,xfplays,null);
+            }
+        });
+        fuzhill.addView(button3);
     }
 
 

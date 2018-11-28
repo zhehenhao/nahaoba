@@ -14,7 +14,7 @@ android {
         applicationId "com.meizi.haokan"
         minSdkVersion 21
         targetSdkVersion 27
-        versionCode 1
+        versionCode 11
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         signingConfig signingConfigs.wangdong
@@ -60,6 +60,7 @@ dependencies {
     implementation 'org.jsoup:jsoup:1.11.3'
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-15'
     implementation 'com.alibaba:fastjson:1.1.70.android'
+    implementation 'com.zhy:okhttputils:2.6.2'
 //    implementation  'com.github.Aspsine:IRecyclerView:0.0.7'
 
 

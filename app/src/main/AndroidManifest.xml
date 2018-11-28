@@ -47,6 +47,7 @@
         <activity
             android:name=".activity.HelpActivity"
             android:label="@string/title_activity_help"
+            android:parentActivityName=".activity.MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".activity.HistoryActivity" />
         <activity android:name=".activity.CollectActivity" />
@@ -78,6 +79,15 @@
         </receiver>
 
         <activity android:name=".activity.PictureActivity"></activity>
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.meizi.haokan.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/gdt_file_path" />
+        </provider>
     </application>
 
 </manifest>

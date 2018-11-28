@@ -36,6 +36,8 @@ public class AlipayUtil
     }
     return false;
   }
+
+
   public static void AlipaySaomiao(Activity activity,String payUrl){
       try {
           Intent intent = new Intent();
@@ -57,7 +59,7 @@ public class AlipayUtil
           Uri murl=Uri.parse(url);
          intent.setData(murl);
          intent.setClassName("com.eg.android.AlipayGphone","com.alipay.mobile.quinox.SchemeLauncherActivity");
-        activity.startActivity(intent);
+           activity.startActivity(intent);
 
       }catch (Exception e){
           e.printStackTrace();

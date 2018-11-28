@@ -77,7 +77,7 @@
                         android:id="@+id/help"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="帮助" />
+                        android:text="下载分享本软件" />
 
                     <Button
                         android:id="@+id/gxyy"

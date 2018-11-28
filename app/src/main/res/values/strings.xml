@@ -20,7 +20,7 @@
     <string name="action_three">评分最高</string>
     <string name="action_four">最新上映</string>
     <string name="action_five">本周热播</string>
-    <string name="xfplayvideoshuoming">请稍等 片刻正在获取视频链接，获取成功后点击下方的按钮进行相关操作</string>
+    <string name="xfplayvideoshuoming"> 正在获取视频链接，获取成功后下方操作按钮出现，点击下方的按钮进行相关操作</string>
 
     <string name="title_activity_XfplayVideoDetailPage">详情页</string>
     <string name="btn" />
@@ -31,4 +31,10 @@
     <string name="gotopage">跳转</string>
     <string name="nextpage">下一页</string>
     <string name="quitpage">关闭</string>
+    <string name="downloadshuoming">下载地址\n
+        方式1:复制下方网址在浏览中打开即可下载\n
+        方式2:通过qq传，qq好友对话框点击发送文件，选择应用，找到本app点击发送\n
+        方式3:扫描下方二维码下载
+    </string>
+    <string name="saomiaoxiazai">二维码：扫描下方二维码下载 QQ-->动态-->扫一扫</string>
 </resources>
