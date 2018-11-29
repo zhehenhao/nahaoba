@@ -19,14 +19,13 @@ import com.meizi.haokan.R;
 import com.meizi.haokan.jsoup.FindPicturelistListener;
 import com.meizi.haokan.jsoup.MeizituJsoup;
 import com.meizi.haokan.picture.adapter.AlbumAdapter;
-import com.meizi.haokan.realm.Album;
+import com.meizi.haokan.model.Album;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import butterknife.BindView;

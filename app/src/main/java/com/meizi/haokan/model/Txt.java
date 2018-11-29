@@ -1,11 +1,8 @@
-package com.meizi.haokan.realm;
+package com.meizi.haokan.model;
 
-import io.realm.RealmObject;
-import io.realm.annotations.PrimaryKey;
 
 public class Txt  {
     private  int updatatime;
-    @PrimaryKey
     private String title;
     private String introduction;
     private String content;

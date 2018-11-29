@@ -1,5 +1,4 @@
-package com.meizi.haokan.realm;
-
+package com.meizi.haokan.model;
 
 import java.util.List;
 

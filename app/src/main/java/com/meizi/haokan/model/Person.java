@@ -1,7 +1,4 @@
-package com.meizi.haokan.realm;
-
-import io.realm.RealmObject;
-import io.realm.annotations.PrimaryKey;
+package com.meizi.haokan.model;
 
 public class Person  {
     public String getName() {
@@ -68,7 +65,7 @@ public class Person  {
         this.hobby = hobby;
     }
 
-    @PrimaryKey
+
     private String name;     //姓名
     private String gender;  //性别
     private  int    age;         //年级

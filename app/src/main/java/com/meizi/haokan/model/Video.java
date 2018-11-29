@@ -1,29 +1,22 @@
-package com.meizi.haokan.realm;
+package com.meizi.haokan.model;
 
-import io.realm.RealmObject;
-import io.realm.annotations.Index;
-import io.realm.annotations.PrimaryKey;
 
 public class Video {
 
     private String updatatime;  //更新时间
-    @PrimaryKey
     private String name;   //视频名
     private String daoyan;  //导游
     private String actor;   //演员
     private String type;   //类型
     private String area;   //地区
     private String image;  //照片
-
     private String bigimg;//大照片
     private float score; //评分
     private String havama;// 有码 无码
     private   long   playbackprogress;   //播放进度
     private   long   playnumber;   //播放次数
     private  long   latestplaytime;  //上次播放时间
-
     private Boolean iscollect;  // 是否收藏
-    @Index
     private String listurl;  //所属的列表页
     private String xiangqingurl; //详情页
     private String playurl;   //播放页

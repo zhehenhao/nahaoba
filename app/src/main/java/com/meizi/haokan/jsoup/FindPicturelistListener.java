@@ -1,6 +1,6 @@
 package com.meizi.haokan.jsoup;
 
-import com.meizi.haokan.realm.Album;
+import com.meizi.haokan.model.Album;
 
 import java.util.List;
 

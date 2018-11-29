@@ -1,6 +1,6 @@
 package com.meizi.haokan.jsoup;
 
-import com.meizi.haokan.realm.Video;
+import com.meizi.haokan.model.Video;
 
 import java.util.List;
 

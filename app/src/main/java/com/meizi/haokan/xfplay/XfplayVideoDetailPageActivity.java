@@ -25,7 +25,7 @@ import com.meizi.haokan.R;
 import com.meizi.haokan.jsoup.FindVideoListener;
 import com.meizi.haokan.jsoup.Xfweb2Jsoup;
 import com.meizi.haokan.jsoup.Xfweb3Jsoup;
-import com.meizi.haokan.realm.Video;
+import com.meizi.haokan.model.Video;
 import com.meizi.haokan.utils.ImageLoaderUtils;
 
 import java.util.ArrayList;

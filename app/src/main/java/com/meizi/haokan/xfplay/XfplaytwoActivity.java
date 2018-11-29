@@ -28,7 +28,7 @@ import com.meizi.haokan.Base.BaseContentListActivity;
 import com.meizi.haokan.R;
 import com.meizi.haokan.jsoup.FindVideolistListener;
 import com.meizi.haokan.jsoup.Xfweb2listJsoup;
-import com.meizi.haokan.realm.Video;
+import com.meizi.haokan.model.Video;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;

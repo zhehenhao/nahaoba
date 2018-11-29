@@ -2,7 +2,7 @@ package com.meizi.haokan.jsoup;
 
 import android.util.Log;
 
-import com.meizi.haokan.realm.Video;
+import com.meizi.haokan.model.Video;
 
 import org.jsoup.nodes.Document;
 

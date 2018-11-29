@@ -3,12 +3,10 @@ package com.meizi.haokan.jsoup;
 import android.util.Log;
 
 import com.blankj.utilcode.util.LogUtils;
-import com.meizi.haokan.realm.Video;
+import com.meizi.haokan.model.Video;
 
 import org.jsoup.nodes.Document;
 
-import java.util.ArrayList;
-import java.util.List;
 /* xf.0ady.info
 * */
 public class Xfweb2Jsoup extends BaseJsoup {

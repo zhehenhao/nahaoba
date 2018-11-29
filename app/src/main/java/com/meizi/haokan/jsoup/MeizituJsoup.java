@@ -1,8 +1,6 @@
 package com.meizi.haokan.jsoup;
 
-import com.blankj.utilcode.util.LogUtils;
-import com.meizi.haokan.picture.MeizituFragment;
-import com.meizi.haokan.realm.Album;
+import com.meizi.haokan.model.Album;
 
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
