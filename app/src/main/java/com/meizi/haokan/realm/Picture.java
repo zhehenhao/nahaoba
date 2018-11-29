@@ -4,7 +4,7 @@ import io.realm.RealmObject;
 import io.realm.annotations.Index;
 import io.realm.annotations.PrimaryKey;
 
-public class Picture extends RealmObject {
+public class Picture  {
     private  long updatatime; //创建时间
     @Index
     private long id;   //序号

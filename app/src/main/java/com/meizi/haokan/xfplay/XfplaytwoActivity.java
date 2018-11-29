@@ -8,8 +8,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
@@ -20,19 +18,16 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.Toast;
 
 import com.blankj.utilcode.util.LogUtils;
-import com.meizi.haokan.Base.BaseXfplaylistActivity;
+import com.meizi.haokan.Base.BaseContentListActivity;
 import com.meizi.haokan.R;
 import com.meizi.haokan.jsoup.FindVideolistListener;
 import com.meizi.haokan.jsoup.Xfweb2listJsoup;
-import com.meizi.haokan.jsoup.Xfweb3listJsoup;
 import com.meizi.haokan.realm.Video;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -45,7 +40,7 @@ import io.realm.Realm;
 
 import static com.meizi.haokan.Base.AppConfig.spanCount;
 
-public class XfplaytwoActivity extends BaseXfplaylistActivity {
+public class XfplaytwoActivity extends BaseContentListActivity {
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -295,14 +290,14 @@ public class XfplaytwoActivity extends BaseXfplaylistActivity {
                     LogUtils.e("接受成功结束");
                     mList.addAll(list);
                     Message message=new Message();
-                    message.what=2101;
+                    message.what=1201;
                     uihandle.sendMessage(message);
                 }
 
                 @Override
                 public void onfailed(String e) {
                     Message message=new Message();
-                    message.what=2102;
+                    message.what=1202;
                     message.obj=e;
                     uihandle.sendMessage(message);
                 }
@@ -315,19 +310,19 @@ public class XfplaytwoActivity extends BaseXfplaylistActivity {
             if(mpage==1){return;}
             mpage=mpage-1;
             smartRefreshLayout.autoRefresh();
-            requestdata();
+//            requestdata();
         }
         public  void nextpage(){
             mpage++;
             smartRefreshLayout.autoRefresh();
-            requestdata();
+//            requestdata();
         }
 
         public void setMpage(int page) {
             if(mpage==page){return;}
             mpage=page;
             smartRefreshLayout.autoRefresh();
-            requestdata();
+//            requestdata();
         }
 
 

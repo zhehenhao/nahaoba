@@ -3,7 +3,7 @@ package com.meizi.haokan.realm;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
-public class Txt extends RealmObject {
+public class Txt  {
     private  int updatatime;
     @PrimaryKey
     private String title;

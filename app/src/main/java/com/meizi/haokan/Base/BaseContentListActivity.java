@@ -9,7 +9,7 @@ import android.widget.EditText;
 import com.meizi.haokan.R;
 
 
-public abstract class BaseXfplaylistActivity extends BaseActivity {
+public abstract class BaseContentListActivity extends BaseActivity {
 
 
     public  void showpagedialog(){

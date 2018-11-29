@@ -3,7 +3,7 @@ package com.meizi.haokan.realm;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
-public class Person extends RealmObject {
+public class Person  {
     public String getName() {
         return name;
     }

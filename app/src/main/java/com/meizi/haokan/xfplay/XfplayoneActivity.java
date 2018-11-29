@@ -19,8 +19,6 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -28,7 +26,7 @@ import android.widget.Toast;
 
 import com.blankj.utilcode.util.LogUtils;
 
-import com.meizi.haokan.Base.BaseXfplaylistActivity;
+import com.meizi.haokan.Base.BaseContentListActivity;
 import com.meizi.haokan.R;
 import com.meizi.haokan.jsoup.FindVideolistListener;
 import com.meizi.haokan.jsoup.Xfweb2listJsoup;
@@ -45,7 +43,7 @@ import io.realm.Realm;
 
 import static com.meizi.haokan.Base.AppConfig.spanCount;
 
-public class XfplayoneActivity extends BaseXfplaylistActivity {
+public class XfplayoneActivity extends BaseContentListActivity {
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -325,18 +323,18 @@ public class XfplayoneActivity extends BaseXfplaylistActivity {
             if(mpage==1){return;}
             mpage=mpage-1;
             smartRefreshLayout.autoRefresh();
-             requestdata();
+//             requestdata();
         }
         public  void nextpage(){
             mpage++;
             smartRefreshLayout.autoRefresh();
-            requestdata();
+//            requestdata();
         }
         public void setMpage(int page) {
             if(mpage==page){return;}
             mpage=page;
             smartRefreshLayout.autoRefresh();
-            requestdata();
+//            requestdata();
         }
 
 

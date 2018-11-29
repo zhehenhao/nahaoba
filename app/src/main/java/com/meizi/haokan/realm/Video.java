@@ -4,7 +4,7 @@ import io.realm.RealmObject;
 import io.realm.annotations.Index;
 import io.realm.annotations.PrimaryKey;
 
-public class Video extends RealmObject {
+public class Video {
 
     private String updatatime;  //更新时间
     @PrimaryKey

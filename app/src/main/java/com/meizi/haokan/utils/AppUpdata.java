@@ -5,7 +5,7 @@ import com.blankj.utilcode.util.LogUtils;
 import com.meizi.haokan.Base.AppWebConfig;
 
 public class AppUpdata {
-    public final  static  String appupdateurl="https://raw.githubusercontent.com/zhehenhao/MyApplication2/master/AppConfig/zhehenhaoupdata.json";
+    public final  static  String appupdateurl="https://raw.githubusercontent.com/zhehenhao/MyApplication2/master/AppConfig/AppWebConfig.json";
     public static  String getAppupdateurl(){
 
        String doc=JsoupUtils.getResponse(appupdateurl);

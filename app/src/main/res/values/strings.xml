@@ -37,4 +37,8 @@
         方式3:扫描下方二维码下载
     </string>
     <string name="saomiaoxiazai">二维码：扫描下方二维码下载 QQ-->动态-->扫一扫</string>
+    <string name="title_activity_girls">GirlsActivity</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

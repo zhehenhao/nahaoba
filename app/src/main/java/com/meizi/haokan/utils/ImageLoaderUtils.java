@@ -6,12 +6,17 @@ package com.meizi.haokan.utils;
  */
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.widget.ImageView;
 
+import com.blankj.utilcode.util.LogUtils;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.model.GlideUrl;
+import com.bumptech.glide.load.model.LazyHeaders;
 import com.meizi.haokan.R;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 
 
 import java.io.File;
@@ -34,6 +39,41 @@ public class ImageLoaderUtils {
     * crossFade()//设置加载动画
     * transform()//图片转换
     * */
+
+    public static void displaymeizitu(Context context, ImageView imageView, String url, String referer) {
+        if (imageView == null) {
+            throw new IllegalArgumentException("argument error");
+        }
+        Glide.with(context).load(buildGlideUrl(url,referer))
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .centerCrop()
+                .placeholder(R.drawable.meizitu)
+                .error(R.drawable.meituerrr)
+                .crossFade().into(imageView);
+    }
+
+    public static void displaymeizitu(Context context, ImageView imageView, String url) {
+        if (imageView == null) {
+            throw new IllegalArgumentException("argument error");
+        }
+        LogUtils.e("imgageLoaderUtils.java :  "+url);
+        Glide.with(context).load(buildGlideUrl(url,"https://www.mzitu.com/"))
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .centerCrop()
+                .placeholder(R.drawable.meizitu)
+                .error(R.drawable.meituerrr)
+                .crossFade().into(imageView);
+    }
+
+    private static GlideUrl buildGlideUrl(String url,String referer) {
+        if (TextUtils.isEmpty(url)) {
+            return null;
+        } else {
+            return new GlideUrl(url, new LazyHeaders.Builder().addHeader("Referer", referer).build());
+        }
+
+    }
+
     public static void display(Context context, ImageView imageView, String url, int placeholder, int error) {
         if (imageView == null) {
             throw new IllegalArgumentException("argument error");

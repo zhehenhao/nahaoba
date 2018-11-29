@@ -182,7 +182,14 @@ public  class BaseActivity extends AppCompatActivity {
                 }
             });
         }else{
-
+            if(isinstall){
+                if(!AppUtils.installAppSilent(file)){
+                    Message message=new Message();
+                    message.what=101;
+                    message.obj=file;
+                    basehandle.sendMessage(message);
+                }
+            }
         }
     }
 

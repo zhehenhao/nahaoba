@@ -6,13 +6,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
+import com.meizi.haokan.Base.BaseActivity;
 import com.meizi.haokan.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class PictureWebActivity extends AppCompatActivity {
+public class PictureWebActivity extends BaseActivity {
 
     @BindView(R.id.guanggao)
     LinearLayout guanggao;
@@ -42,6 +43,7 @@ public class PictureWebActivity extends AppCompatActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tupian1:
+                goactivity(GirlsActivity.class);
                 break;
             case R.id.tupian2:
                 break;

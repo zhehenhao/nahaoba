@@ -1,16 +1,27 @@
 package com.meizi.haokan.realm;
 
-import io.realm.RealmList;
-import io.realm.RealmObject;
 
-public class Album extends RealmObject {
+import java.util.List;
+
+public class Album  {
     private long updatatime;
-    private RealmList<Picture> pictures;
+    private List<Picture> pictures;
     private String listurl;
     private String name;            //标题
+
+    private String img;            //海报
     private String contenturl;  //内容页面
     private  boolean iscollect;  //收藏
     private  long lastseetime;   //上一次的查看时间
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
     public long getUpdatatime() {
         return updatatime;
     }
@@ -19,11 +30,11 @@ public class Album extends RealmObject {
         this.updatatime = updatatime;
     }
 
-    public RealmList<Picture> getPictures() {
+    public List<Picture> getPictures() {
         return pictures;
     }
 
-    public void setPictures(RealmList<Picture> pictures) {
+    public void setPictures(List<Picture> pictures) {
         this.pictures = pictures;
     }
 

@@ -8,7 +8,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
@@ -27,8 +26,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.blankj.utilcode.util.LogUtils;
-import com.meizi.haokan.Base.BaseActivity;
-import com.meizi.haokan.Base.BaseXfplaylistActivity;
+import com.meizi.haokan.Base.BaseContentListActivity;
 import com.meizi.haokan.R;
 import com.meizi.haokan.jsoup.FindVideolistListener;
 import com.meizi.haokan.jsoup.Xfweb3listJsoup;
@@ -44,7 +42,7 @@ import io.realm.Realm;
 
 import static com.meizi.haokan.Base.AppConfig.spanCount;
 
-public class XfplaythreeActivity extends BaseXfplaylistActivity {
+public class XfplaythreeActivity extends BaseContentListActivity {
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -357,26 +355,26 @@ public class XfplaythreeActivity extends BaseXfplaylistActivity {
             if(mpage==1){return;}
             mpage=mpage-1;
             smartRefreshLayout.autoRefresh();
-            requestdata();
+//            requestdata();
         }
         public  void nextpage(){
             mpage++;
             smartRefreshLayout.autoRefresh();
-            requestdata();
+//            requestdata();
         }
 
         public void setMpage(int page) {
             if(mpage==page){return;}
             mpage=page;
             smartRefreshLayout.autoRefresh();
-            requestdata();
+//            requestdata();
         }
 
         public void setMsort(int msort) {
             if(position>3){
             this.msort = msort;
             smartRefreshLayout.autoRefresh();
-            requestdata();
+//            requestdata();
             }
         }
 

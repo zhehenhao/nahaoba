@@ -27,7 +27,6 @@ import com.meizi.haokan.jsoup.Xfweb2Jsoup;
 import com.meizi.haokan.jsoup.Xfweb3Jsoup;
 import com.meizi.haokan.realm.Video;
 import com.meizi.haokan.utils.ImageLoaderUtils;
-import com.meizi.haokan.utils.IntentHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,8 +38,6 @@ import butterknife.OnClick;
 import cc.shinichi.library.ImagePreview;
 import cc.shinichi.library.bean.ImageInfo;
 import io.realm.Realm;
-import io.realm.RealmList;
-import io.realm.RealmResults;
 
 import static com.blankj.utilcode.util.AppUtils.getAppsInfo;
 
@@ -86,6 +83,8 @@ public class XfplayVideoDetailPageActivity extends BaseActivity {
     Button btnCollect;
     @BindView(R.id.imageView)
     ImageView imageView;
+    @BindView(R.id.fuzhil2)
+    LinearLayout fuzhil2;
 
     private String xiangqingye, bofangye;
     private List<String> bofangyes = new ArrayList<>();
@@ -93,7 +92,7 @@ public class XfplayVideoDetailPageActivity extends BaseActivity {
     private String img;
     private Context mcontext;
 
-    private String xfplays ;
+    private String xfplays;
     private int webtype;
     final List<ImageInfo> imageInfoList = new ArrayList<>();
     private Random random;
@@ -107,7 +106,7 @@ public class XfplayVideoDetailPageActivity extends BaseActivity {
             switch (msg.what) {
                 case 3001:
                     mvideo = (Video) msg.obj;
-                    xfplays=mvideo.getXfplay();
+                    xfplays = mvideo.getXfplay();
                     initoneui();
                     break;
                 case 3002:
@@ -115,22 +114,22 @@ public class XfplayVideoDetailPageActivity extends BaseActivity {
                     break;
                 case 3003:
                     mvideo = (Video) msg.obj;
-                    xfplays=mvideo.getXfplay();
+                    xfplays = mvideo.getXfplay();
                     initthreeui();
                     break;
                 case 3004:
 
                     break;
-                case  3005:
+                case 3005:
 
                     break;
-                case  3006:
+                case 3006:
                     break;
-                case  3007:
+                case 3007:
                     initui();
                     break;
-                case  3008:
-                   startjsoupthread();
+                case 3008:
+                    startjsoupthread();
                     break;
 
             }
@@ -146,44 +145,44 @@ public class XfplayVideoDetailPageActivity extends BaseActivity {
         ButterKnife.bind(this);
         mcontext = this;
         getData();
-
     }
+
     String actor;
 
     public void getData() {
         webtype = getIntent().getIntExtra("web", 1);
         xiangqingye = getIntent().getStringExtra("xiangqingye");
+        LogUtils.e("详情页：" + xiangqingye);
         name = getIntent().getStringExtra("name");
         img = getIntent().getStringExtra("img");
         biaoti.setText(name);
         ImageLoaderUtils.display(this, xfxqimg, img);
-try {
-    realm =Realm.getInstance(App.config);
-    realm.executeTransactionAsync(new Realm.Transaction() {
-        @Override
-        public void execute(Realm realm) {
+//    try {
+//         realm =Realm.getInstance(App.config);
+//             realm.executeTransactionAsync(new Realm.Transaction() {
+//        @Override
+//          public void execute(Realm realm) {
+//
+//             mvideo=realm.where(Video.class).equalTo("xiangqingurl",xiangqingye).findFirst();
+//             if(mvideo==null||mvideo.getXfplay()==null){
+//                LogUtils.e("没有找到");
+//                Message message=new Message();
+//                message.what=3008;
+//                uihandler.sendMessage(message);
+//            }else{
+//
+//                xfplays=mvideo.getXfplay();
+//                 LogUtils.e("找到"+xfplays);
+//                Message message=new Message();
+//                message.what=3007;
+//                uihandler.sendMessage(message);}
+//        }
+//    });}catch (Exception e){}
+        startjsoupthread();
 
-            mvideo=realm.where(Video.class).equalTo("xiangqingurl",xiangqingye).findFirst();
-            if(mvideo==null){
-                LogUtils.e("没有找到");
-                Message message=new Message();
-                message.what=3008;
-                uihandler.sendMessage(message);
-            }else{
-                xfplays=mvideo.getXfplay();
-                LogUtils.e(mvideo.toString());
-                Message message=new Message();
-                message.what=3007;
-                uihandler.sendMessage(message);}
-        }
-    });}catch (Exception e){}finally {
-    realm.close();
-    realm=null;
     }
 
-}
-
-    private void startjsoupthread(){
+    private void startjsoupthread() {
         switch (webtype) {
             case 1:
                 starttwothread();
@@ -196,16 +195,17 @@ try {
                 break;
         }
     }
+
     private void starttwothread() {
         Xfweb2Jsoup thread = new Xfweb2Jsoup(xiangqingye);
         thread.setFindVideoListener(new FindVideoListener() {
             @Override
             public void onSucceed(Video video) {
-                saveVideo(video,false);
-                xfplays=video.getXfplay();
+//                saveVideo(video,false);
+                xfplays = video.getXfplay();
                 Message message = new Message();
                 message.what = 3001;
-                message.obj=video;
+                message.obj = video;
                 uihandler.sendMessage(message);
 
             }
@@ -227,11 +227,11 @@ try {
         thread.setFindVideoListener(new FindVideoListener() {
             @Override
             public void onSucceed(Video video) {
-                saveVideo(video,false);
-                xfplays=video.getXfplay();
+//                saveVideo(video,false);
+                xfplays = video.getXfplay();
                 Message message = new Message();
                 message.what = 3003;
-                message.obj=video;
+                message.obj = video;
                 uihandler.sendMessage(message);
 
             }
@@ -247,17 +247,18 @@ try {
         thread.start();
     }
 
-   private void  initui(){
-       switch (webtype) {
+    private void initui() {
+        switch (webtype) {
             case 1:
-              case 2:
-          initoneui();
+            case 2:
+                initoneui();
                 break;
             case 3:
-            initthreeui();
+                initthreeui();
                 break;
         }
-   }
+    }
+
     private void initthreeui() {
 //        if (mvideo != null) {
 //            zhuyan.setText(actor);
@@ -265,7 +266,7 @@ try {
 //            diqu.setText(mvideo.getArea());
 //            updatetime.setText(mvideo.getUpdatatime());
 //            pingfen.setText("" + mvideo.getScore());
-            addbutton(xfplays);
+        addbutton(xfplays);
 //        }
     }
 
@@ -283,64 +284,89 @@ try {
     private void addbutton(final String xfplay) {
         Log.d("xfplay 链接", "addbutton: " + xfplay);
         final Button button = new Button(this);
-        button.setText("复制此视频先锋链接");
-        button.setBackgroundColor(Color.YELLOW);
+        button.setText("复制先锋链接");
+        button.setBackgroundColor(Color.RED);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 setClipText(xfplay);
-                ToastUtils.showShort("已经复制先锋链接到剪贴板");
+                ToastUtils.showShort("已经复制先锋链接到剪贴板\n先锋链接：" + xfplay);
             }
         });
         fuzhill.addView(button);
+
         final Button button1 = new Button(this);
-        button1.setText("播放此视频");
+        button1.setText("播放视频");
         button1.setBackgroundColor(Color.YELLOW);
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                startxfplay(xfplay);
             }
         });
         fuzhill.addView(button1);
+
         final Button button2 = new Button(this);
         button2.setText("分享到QQ");
         button2.setBackgroundColor(Color.GREEN);
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               shareQQ(xfplay);
+                shareQQ(xfplay);
             }
         });
         fuzhill.addView(button2);
 
-        fuzhill.addView(button1);
+
         final Button button3 = new Button(this);
         button3.setText("分享到其他");
-        button3.setBackgroundColor(Color.GREEN);
+        button3.setBackgroundColor(Color.BLUE);
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                shareMsg("选择分享到",name,xfplays,null);
+                shareMsg("选择分享到", name, xfplays, null);
             }
         });
         fuzhill.addView(button3);
     }
-
+private  boolean isadd=false;
+    private void addappbutton() {
+        if(isadd){
+            return;
+        }
+        final Button button3 = new Button(this);
+        button3.setText("点击下载先锋影音");
+        button3.setBackgroundColor(Color.YELLOW);
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                downandinstallxfplay();
+                ToastUtils.showLong("已经开始下载，下载完成后将自动唤起安装，请点击确认安装");
+            }
+        });
+        fuzhil2.addView(button3);
+        isadd=true;
+    }
 
     public void startxfplay(String URL) {
-        try {
-            Intent localIntent = new Intent("android.intent.action.VIEW");
-            localIntent.addCategory("android.intent.category.DEFAULT");
-            localIntent.setData(Uri.parse(URL));
-            // getPackageManager().getLaunchIntentForPackage("com.xfplay.play");
+        if (AppUtils.isAppInstalled("com.xfplay.play")) {
+
+            try {
+                Intent localIntent = new Intent("android.intent.action.VIEW");
+                localIntent.addCategory("android.intent.category.DEFAULT");
+                localIntent.setData(Uri.parse(URL));
+                // getPackageManager().getLaunchIntentForPackage("com.xfplay.play");
 //            localIntent.setComponent(new ComponentName("com.xfplay.play", "com.xfplay.browser.XfmainActivity"));
-            startActivity(localIntent);
-            Toast.makeText(mcontext, "开始播放", Toast.LENGTH_LONG).show();
-            return;
-        } catch (Exception paramString) {
+                startActivity(localIntent);
+                Toast.makeText(mcontext, "开始播放", Toast.LENGTH_LONG).show();
+                return;
+            } catch (Exception paramString) {
 //
+            }
+        } else {
+            ToastUtils.showLong("先锋影音应用未安装，请先下载安装");
+            addappbutton();
         }
     }
 
@@ -372,25 +398,25 @@ try {
         return false;
     }
 
-    @OnClick({R.id.xfxqimg, R.id.xfbanner,R.id.imageView,R.id.btn_collect})
+    @OnClick({R.id.xfxqimg, R.id.xfbanner, R.id.imageView, R.id.btn_collect})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.xfxqimg:
-               imageInfoList.clear();
-                 ImageInfo imageInfo=new ImageInfo();
-                 imageInfo.setOriginUrl(img);
-                 imageInfoList.add(imageInfo);
-                 ImagePreview.getInstance().setContext(this).setImageInfoList(imageInfoList).start();
+                imageInfoList.clear();
+                ImageInfo imageInfo = new ImageInfo();
+                imageInfo.setOriginUrl(img);
+                imageInfoList.add(imageInfo);
+                ImagePreview.getInstance().setContext(this).setImageInfoList(imageInfoList).start();
                 break;
 
             case R.id.xfbanner:
 
                 break;
             case R.id.imageView:
-              imageInfoList.clear();
-                ImageInfo imageInfo1=new ImageInfo();
+                imageInfoList.clear();
+                ImageInfo imageInfo1 = new ImageInfo();
                 imageInfo1.setOriginUrl(mvideo.getBigimg());
-                 imageInfoList.add(imageInfo1);
+                imageInfoList.add(imageInfo1);
                 ImagePreview.getInstance().setContext(this).setImageInfoList(imageInfoList).start();
                 break;
             case R.id.btn_collect:
@@ -401,29 +427,29 @@ try {
 
     private void saveVideo(final Video video, final boolean iscollect) {
         LogUtils.e("保存抓取的对象开始");
-   try {
-       realm=Realm.getInstance(App.config);
-      video.setUpdatatime(TimeUtils.getNowDate().toString());
-       LogUtils.e("设置时间");
-      video.setIscollect(iscollect);
-       realm.executeTransaction(new Realm.Transaction() {
-           @Override
-           public void execute(Realm realm) {
+        try {
+            realm = Realm.getInstance(App.config);
+            video.setUpdatatime(TimeUtils.getNowDate().toString());
+            LogUtils.e("设置时间");
+            video.setIscollect(iscollect);
+            realm.executeTransaction(new Realm.Transaction() {
+                @Override
+                public void execute(Realm realm) {
 
-               Video  mvideo=realm.copyToRealmOrUpdate(video);
-               LogUtils.e("保存抓取的对象2");
+                    Video mvideo = realm.copyToRealmOrUpdate(video);
+                    LogUtils.e("保存抓取的对象2");
 
 
-           }
-       });
-   }catch (Exception e){}finally {
-       LogUtils.e("关闭realm");
-       realm.close();
-       realm=null;
-   }
+                }
+            });
+        } catch (Exception e) {
+        } finally {
+            LogUtils.e("关闭realm");
+            realm.close();
+            realm = null;
+        }
 
     }
-
 
 
 }

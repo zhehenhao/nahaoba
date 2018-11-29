@@ -78,7 +78,8 @@
                 android:resource="@xml/new_app_widget_info" />
         </receiver>
 
-        <activity android:name=".activity.PictureActivity"></activity>
+        <activity android:name=".activity.PictureActivity" />
+
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="com.meizi.haokan.fileprovider"
@@ -88,6 +89,16 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/gdt_file_path" />
         </provider>
+
+        <activity
+            android:name=".picture.GirlsActivity"
+            android:label="@string/title_activity_girls"
+            android:parentActivityName=".picture.PictureWebActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.meizi.haokan.picture.PictureWebActivity" />
+        </activity>
     </application>
 
 </manifest>

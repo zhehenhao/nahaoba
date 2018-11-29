@@ -36,7 +36,7 @@
                 android:id="@+id/tupian1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="图片一区" />
+                android:text="妹子图" />
 
             <Button
                 android:id="@+id/tupian2"

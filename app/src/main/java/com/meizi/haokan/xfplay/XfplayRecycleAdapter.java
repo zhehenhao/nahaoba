@@ -59,15 +59,10 @@ public class XfplayRecycleAdapter extends RecyclerView.Adapter<XfplayRecycleAdap
     }
 
 
-
-
-
-
     @Override
     public int getItemCount() {
         return mList.size();
     }
-
 
 
     public   class  xfplayItemViewHolder extends RecyclerView.ViewHolder{
