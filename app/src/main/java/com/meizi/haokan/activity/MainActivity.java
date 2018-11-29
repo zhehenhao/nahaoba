@@ -12,7 +12,7 @@ import com.meizi.haokan.Base.BaseActivity;
 import com.meizi.haokan.R;
 import com.meizi.haokan.online.OnlineWebActivity;
 import com.meizi.haokan.picture.PictureWebActivity;
-import com.meizi.haokan.qvod.QvodWebActivity;
+import com.meizi.haokan.qvod.QvodWebSelectActivity;
 import com.meizi.haokan.search.SearchActivity;
 import com.meizi.haokan.utils.AlipayUtil;
 import com.meizi.haokan.xfplay.XfplayWebActivity;
@@ -105,7 +105,7 @@ public  class MainActivity extends BaseActivity {
                 goactivity(XfplayWebActivity.class);
                 break;
             case R.id.kbqu:
-                goactivity(QvodWebActivity.class);
+                goactivity(QvodWebSelectActivity.class);
 
                 break;
             case R.id.tpqu:

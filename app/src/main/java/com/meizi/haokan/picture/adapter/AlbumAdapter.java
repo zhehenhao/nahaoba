@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.meizi.haokan.R;
+import com.meizi.haokan.picture.MeizituPictureActivity;
 import com.meizi.haokan.picture.view.AlbumViewHolder;
 import com.meizi.haokan.model.Album;
 import com.meizi.haokan.utils.ImageLoaderUtils;
@@ -71,7 +72,14 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumViewHolder> {
         holder.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mcontext.startActivity(MeizituPictureActivity.newIntent(mcontext,album.getContenturl(),album.getName()));
+            }
+        });
+        holder.imageView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
 
+                return true;
             }
         });
 

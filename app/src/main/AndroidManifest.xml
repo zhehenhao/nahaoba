@@ -36,7 +36,7 @@
         </activity>
         <activity android:name=".picture.PictureWebActivity" />
         <activity android:name=".xfplay.XfplayWebActivity" />
-        <activity android:name=".qvod.QvodWebActivity" />
+        <activity android:name=".qvod.QvodWebSelectActivity" />
         <activity android:name=".online.OnlineWebActivity" />
         <activity android:name=".xigua.XiguaWebActivity" />
         <activity android:name=".text.TextWebActivity" />
@@ -98,6 +98,24 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.meizi.haokan.picture.PictureWebActivity" />
+        </activity>
+        <activity
+            android:name=".qvod.QvodWebActivity"
+            android:label="@string/title_activity_qvod_web"
+            android:parentActivityName=".qvod.QvodWebSelectActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.meizi.haokan.qvod.QvodWebSelectActivity" />
+        </activity>
+        <activity
+            android:name=".picture.MeizituPictureActivity"
+            android:label="@string/title_activity_meizitu_picture"
+            android:parentActivityName=".picture.GirlsActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.meizi.haokan.picture.GirlsActivity" />
         </activity>
     </application>
 
