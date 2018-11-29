@@ -92,7 +92,7 @@ public  class MainActivity extends BaseActivity {
         webconfig.setZfbsearchword("支付宝搜索词");
         webconfig.setZfburl("支付宝网页赏金地址");
         LogUtils.e(JSON.toJSONString(webconfig));
-        checkUpdata(false);
+//        checkUpdata(false);
     }
 
     @OnClick({R.id.guanggao, R.id.xfqu, R.id.kbqu, R.id.tpqu, R.id.lsjl, R.id.search
