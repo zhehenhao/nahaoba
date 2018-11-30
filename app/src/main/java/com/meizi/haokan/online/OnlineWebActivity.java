@@ -15,12 +15,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.meizi.haokan.Base.BaseContentListActivity;
 import com.meizi.haokan.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class OnlineWebActivity extends AppCompatActivity {
+public class OnlineWebActivity extends BaseContentListActivity {
 
     /**
 
@@ -35,16 +36,43 @@ public class OnlineWebActivity extends AppCompatActivity {
     private List<OnlineViewlistFragment> fragmentList=new ArrayList<>();
     private int currentposition;
     private OnlineViewlistFragment currentfragment;
-
-
+    private String[] titles;
+    private String[]  web1={"","","","","","","","","","","","","","",""};
+    private String[]  web2={"","","","","","","","","","","","","","",""};
+    private String[]  web3={"","","","","","","","","","","","","","",""};
+    private String[]  web4={"","","","","","","","","","","","","","",""};
+    private int webtype=1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_online_web);
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        webtype=getIntent().getIntExtra("type",1)
+
+                switch(webtype){
+                    case 1:
+                        titles=web1;
+                        break;
+                    case 2:
+                        titles=web2;
+                        break;
+                    case 3:
+                        titles=web3;
+                        break;
+                    case 4:
+                        titles=web4;
+                        break;
+
+                }
+
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+        for(int i=0;i<titles.length;i++){
+            tabLayout.addTab(tabLayout.newTab().setText(titles[i]));
+            OnlineViewlistFragment fragment=OnlineViewlistFragment.newInstance()
+        }
+
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
@@ -53,7 +81,6 @@ public class OnlineWebActivity extends AppCompatActivity {
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
 
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
@@ -117,4 +144,10 @@ public class OnlineWebActivity extends AppCompatActivity {
             return 3;
         }
     }
+
+    protected  void gotopage(int i){}
+
+    protected  void nextpage(){}
+
+    protected  void lastpage(){}
 }

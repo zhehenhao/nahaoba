@@ -1,5 +1,6 @@
 package com.meizi.haokan.online;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -44,19 +45,28 @@ public class OnlineWebSelectActivity extends AppCompatActivity {
             case R.id.guanggao:
                 break;
             case R.id.onlineweb1:
+                goOnlineWebActivity(1);
                 break;
             case R.id.onlineweb2:
+                goOnlineWebActivity(2);
                 break;
             case R.id.onlineweb3:
+                goOnlineWebActivity(3);
                 break;
             case R.id.banner:
                 break;
             case R.id.onlineweb4:
+                goOnlineWebActivity(4);
                 break;
             case R.id.onlineweb5:
                 break;
             case R.id.onlineweb6:
                 break;
         }
+    }
+  public void  goOnlineWebActivity(int i){
+        Intent intent=new Intent(this,OnlineWebActivity.class);
+        intent.putExtra("type",i);
+        this.startActivity(intent);
     }
 }
