@@ -17,8 +17,9 @@ import com.blankj.utilcode.util.ToastUtils;
 import com.meizi.haokan.Base.BaseActivity;
 import com.meizi.haokan.R;
 import com.meizi.haokan.jsoup.MeizituPictureJsoup;
+import com.meizi.haokan.listener.FindPictureListener;
 import com.meizi.haokan.model.Picture;
-import com.meizi.haokan.picture.adapter.MeiziPictureAdapter;
+import com.meizi.haokan.picture.adapter.PictureAdapter;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
@@ -45,7 +46,7 @@ public class MeizituPictureActivity extends BaseActivity implements OnLoadMoreLi
     private  String title;
     private  String url;
    private MeizituPictureJsoup jsoup;
-   private MeiziPictureAdapter adapter;
+   private PictureAdapter adapter;
    private boolean isover=false;
 
    private Handler uihandler=new Handler(){
@@ -111,7 +112,7 @@ public class MeizituPictureActivity extends BaseActivity implements OnLoadMoreLi
     private void initview() {
         meitupicrefreshlayout.setOnRefreshListener(this);
         meitupicrefreshlayout.setOnLoadMoreListener(this);
-        adapter=new MeiziPictureAdapter(this, picturelist);
+        adapter=new PictureAdapter(this, picturelist);
         meitupicrecyclerview.setLayoutManager(new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
         meitupicrecyclerview.setAdapter(adapter);
         meitupicrecyclerview.post(new Runnable() {
@@ -146,7 +147,7 @@ if(isover){
 
     private  void requstdata(){
         jsoup=new MeizituPictureJsoup(title,url);
-        jsoup.setFindMeiziPictureListener(new MeizituPictureJsoup.FindMeiziPictureListener() {
+        jsoup.setFindPictureListener(new FindPictureListener() {
             @Override
             public void onSucceed(List<Picture> list) {
                 Message message =new Message();

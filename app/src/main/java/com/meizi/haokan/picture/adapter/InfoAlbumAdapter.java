@@ -8,7 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.meizi.haokan.R;
+import com.meizi.haokan.model.Album;
 import com.meizi.haokan.model.Picture;
+import com.meizi.haokan.picture.InfoPictureActivity;
 import com.meizi.haokan.picture.view.AlbumViewHolder;
 import com.meizi.haokan.utils.ImageLoaderUtils;
 
@@ -17,8 +19,12 @@ import java.util.List;
 
 public class InfoAlbumAdapter extends RecyclerView.Adapter<AlbumViewHolder> {
 
-    private List<Picture> pictureList=new ArrayList<>();
+    private List<Album> albumList=new ArrayList<>();
     private Context mcontext;
+     public  InfoAlbumAdapter(Context context, List<Album> list){
+         this.mcontext=context;
+         this.albumList=list;
+     }
 
     @NonNull
     @Override
@@ -28,12 +34,13 @@ public class InfoAlbumAdapter extends RecyclerView.Adapter<AlbumViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull AlbumViewHolder holder, int position) {
-        Picture picture=pictureList.get(position);
-        ImageLoaderUtils.display(mcontext,holder.imageView,picture.getImg());
+        final Album album=albumList.get(position);
+        ImageLoaderUtils.display(mcontext,holder.imageView,album.getImg());
         holder.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                mcontext.startActivity();
+//
+         mcontext.startActivity(InfoPictureActivity.newIntent(mcontext,album.getName(),album.getContenturl()));
             }
         });
         holder.imageView.setOnLongClickListener(new View.OnLongClickListener() {
@@ -47,6 +54,6 @@ public class InfoAlbumAdapter extends RecyclerView.Adapter<AlbumViewHolder> {
 
     @Override
     public int getItemCount() {
-        return pictureList.size();
+        return albumList.size();
     }
 }

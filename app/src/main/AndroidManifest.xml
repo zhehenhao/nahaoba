@@ -126,6 +126,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.meizi.haokan.picture.PictureWebActivity" />
         </activity>
+        <activity
+            android:name=".picture.InfoPictureActivity"
+            android:label="@string/title_activity_info_picture"
+            android:parentActivityName=".picture.InfoAlbumActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.meizi.haokan.picture.InfoAlbumActivity" />
+        </activity>
     </application>
 
 </manifest>

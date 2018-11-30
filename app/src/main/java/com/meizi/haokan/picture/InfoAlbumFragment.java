@@ -13,9 +13,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.blankj.utilcode.util.ToastUtils;
 import com.meizi.haokan.R;
+import com.meizi.haokan.jsoup.InfoAlbumJsoup;
+import com.meizi.haokan.listener.FindAlbumListener;
 import com.meizi.haokan.model.Album;
 import com.meizi.haokan.model.Picture;
+import com.meizi.haokan.picture.adapter.AlbumAdapter;
+import com.meizi.haokan.picture.adapter.InfoAlbumAdapter;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
@@ -44,18 +49,26 @@ public class InfoAlbumFragment extends Fragment implements OnRefreshListener, On
     private int sort = 1;
     private String title = null;
     private List<Album> albumList=new ArrayList<>();
+    private InfoAlbumJsoup jsoup;
+    private InfoAlbumAdapter adapter;
     private Handler uihandler=new Handler(){
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             switch (msg.what){
                 case 3021:
-
+                    inforefreshlayout.finishLoadMore(600);
+                    inforefreshlayout.finishRefresh(600);
+                    ToastUtils.showLong("本写真集已经全部加载完毕");
                     break;
                 case  3022:
+                    inforefreshlayout.finishLoadMore(600);
+                    inforefreshlayout.finishRefresh(600);
+                    adapter.notifyDataSetChanged();
 
                     break;
                 case  3023:
+                    ToastUtils.showLong((String) msg.obj);
 
                     break;
             }
@@ -104,6 +117,14 @@ public class InfoAlbumFragment extends Fragment implements OnRefreshListener, On
         inforefreshlayout.setOnRefreshListener(this);
         inforefreshlayout.setOnLoadMoreListener(this);
         inforecycle.setLayoutManager(new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
+        adapter=new InfoAlbumAdapter(getContext(),albumList);
+        inforecycle.setAdapter(adapter);
+        inforecycle.post(new Runnable() {
+            @Override
+            public void run() {
+               inforefreshlayout.autoRefresh();
+            }
+        });
 
     }
 
@@ -156,6 +177,32 @@ public class InfoAlbumFragment extends Fragment implements OnRefreshListener, On
     }
 
     private void requestdata() {
+        jsoup=new InfoAlbumJsoup(title,page,sort);
+        jsoup.setFindAlbumListener(new FindAlbumListener() {
+            @Override
+            public void onSucceed(List<Album> albumList) {
+                Message msg=new Message();
+                msg.what=3021;
+                uihandler.sendMessage(msg);
+            }
+
+            @Override
+            public void onFailed(String e) {
+                Message msg=new Message();
+                msg.what=3023;
+                msg.obj=e;
+                uihandler.sendMessage(msg);
+            }
+
+            @Override
+            public void onSimpleSucceed(Album album) {
+                albumList.add(album);
+                Message msg=new Message();
+                msg.what=3022;
+                uihandler.sendMessage(msg);
+
+            }
+        });
 
     }
 

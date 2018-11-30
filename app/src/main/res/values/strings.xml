@@ -44,4 +44,5 @@
     <string name="title_activity_qvod_web">QvodWebActivity</string>
     <string name="title_activity_meizitu_picture">妹子图专辑</string>
     <string name="title_activity_info_album">InfoAlbumActivity</string>
+    <string name="title_activity_info_picture">InfoPictureActivity</string>
 </resources>

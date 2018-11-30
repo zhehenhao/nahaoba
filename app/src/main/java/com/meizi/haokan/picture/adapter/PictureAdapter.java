@@ -20,13 +20,13 @@ import java.util.List;
 import cc.shinichi.library.ImagePreview;
 import cc.shinichi.library.bean.ImageInfo;
 
-public class MeiziPictureAdapter extends RecyclerView.Adapter<MeiziPictureAdapter.MeiziPictureViewHolder>{
+public class PictureAdapter extends RecyclerView.Adapter<PictureAdapter.PictureViewHolder>{
 
 
     private List<Picture> pictures=new ArrayList<>();
     private Context mcontext;
 
-    public MeiziPictureAdapter(Context context,List<Picture> list ){
+    public PictureAdapter(Context context, List<Picture> list ){
         this.mcontext=context;
         pictures=list;
     }
@@ -34,13 +34,13 @@ public class MeiziPictureAdapter extends RecyclerView.Adapter<MeiziPictureAdapte
 
     @NonNull
     @Override
-    public MeiziPictureViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public PictureViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        return new MeiziPictureViewHolder(LayoutInflater.from(mcontext).inflate(R.layout.item_meizitu,parent,false));
+        return new PictureViewHolder(LayoutInflater.from(mcontext).inflate(R.layout.item_meizitu,parent,false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MeiziPictureViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull PictureViewHolder holder, final int position) {
       final Picture picture=pictures.get(position);
         ImageLoaderUtils.displaymeizitu(mcontext,holder.imageView,picture.getImg(),picture.getReferer());
         holder.imageView.setOnClickListener(new View.OnClickListener() {
@@ -97,9 +97,9 @@ public class MeiziPictureAdapter extends RecyclerView.Adapter<MeiziPictureAdapte
         return pictures.size();
     }
 
-    public class  MeiziPictureViewHolder extends RecyclerView.ViewHolder{
+    public class PictureViewHolder extends RecyclerView.ViewHolder{
        public ImageView imageView;
-        public MeiziPictureViewHolder(View itemView) {
+        public PictureViewHolder(View itemView) {
             super(itemView);
             imageView=itemView.findViewById(R.id.iv_meizitu);
         }

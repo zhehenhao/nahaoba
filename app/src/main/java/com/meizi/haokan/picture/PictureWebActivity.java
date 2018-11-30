@@ -46,6 +46,7 @@ public class PictureWebActivity extends BaseActivity {
                 goactivity(GirlsActivity.class);
                 break;
             case R.id.tupian2:
+                goactivity(InfoAlbumActivity.class);
                 break;
             case R.id.tupian3:
                 break;
