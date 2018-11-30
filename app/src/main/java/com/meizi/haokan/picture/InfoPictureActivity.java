@@ -91,7 +91,7 @@ public class InfoPictureActivity extends BaseActivity implements OnLoadMoreListe
           setSupportActionBar(toolbar);
         title=getIntent().getStringExtra(EXTRA_TITLE);
         url=getIntent().getStringExtra(EXTRA_URL);
-        toolbar.setTitle(title);
+        toolbar.setSubtitle(title);
 
 
         fab.setOnClickListener(new View.OnClickListener() {

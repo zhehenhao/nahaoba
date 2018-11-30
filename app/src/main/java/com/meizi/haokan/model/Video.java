@@ -1,7 +1,9 @@
 package com.meizi.haokan.model;
 
 
-public class Video {
+import java.io.Serializable;
+
+public class Video implements Serializable {
 
     private String updatatime;  //更新时间
     private String name;   //视频名

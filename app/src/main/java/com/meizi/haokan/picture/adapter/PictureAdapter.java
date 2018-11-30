@@ -1,6 +1,7 @@
 package com.meizi.haokan.picture.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import android.widget.ImageView;
 import com.blankj.utilcode.util.ToastUtils;
 import com.meizi.haokan.R;
 import com.meizi.haokan.model.Picture;
+import com.meizi.haokan.service.GirlService;
 import com.meizi.haokan.utils.ImageLoaderUtils;
 
 
@@ -42,12 +44,15 @@ public class PictureAdapter extends RecyclerView.Adapter<PictureAdapter.PictureV
     @Override
     public void onBindViewHolder(@NonNull PictureViewHolder holder, final int position) {
       final Picture picture=pictures.get(position);
-        ImageLoaderUtils.displaymeizitu(mcontext,holder.imageView,picture.getImg(),picture.getReferer());
+        ImageLoaderUtils.displaymeizitu(mcontext,holder.imageView,picture.getImg(),picture.getRefer());
         holder.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ToastUtils.showLong("点击了"+position);
            showpicture(position,picture.getTitle());
+           if(picture.getImg().contains("meizitu")){
+               GirlService.start(mcontext,pictures);
+           }
             }
         });
 

@@ -55,7 +55,7 @@ public class MeizituPictureJsoup extends BaseJsoup {
             String img=doc.select("body > div.main > div.content > div.main-image > p > a > img").attr("src");
             Picture picture=new Picture();
             picture.setImg(img);
-            picture.setReferer(s);
+            picture.setRefer(s);
             picture.setTitle(mtitle);
             picture.setId(i);
             picture.setDomain("https://www.mzitu.com");

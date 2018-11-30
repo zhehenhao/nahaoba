@@ -1,7 +1,9 @@
 package com.meizi.haokan.model;
 
 
-public class Picture  {
+import java.io.Serializable;
+
+public class Picture implements Serializable {
     public String getDomain() {
         return domain;
     }
@@ -58,12 +60,12 @@ public class Picture  {
         this.lastseetime = lastseetime;
     }
 
-    public String getReferer() {
-        return referer;
+    public String getRefer() {
+        return refer;
     }
 
-    public void setReferer(String referer) {
-        this.referer = referer;
+    public void setRefer(String refer) {
+        this.refer = refer;
     }
 
     private  String domain;    //
@@ -73,6 +75,6 @@ public class Picture  {
     private String img; //图片地址
    private  boolean iscollect;  //收藏
     private int  lastseetime;  //上一次的查看时间
-    private String referer;  //referer
+    private String refer;  //refer
 
 }

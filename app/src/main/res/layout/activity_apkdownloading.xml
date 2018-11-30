@@ -26,10 +26,22 @@
             android:text="先锋影音下载" />
 
         <Button
+            android:id="@+id/xfplayapp2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="先锋影音本地下载" />
+
+        <Button
             android:id="@+id/xiguaapp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="西瓜影音下载" />
+
+        <Button
+            android:id="@+id/xiguaapp2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="西瓜影视本地下载" />
 
         <Button
             android:id="@+id/qvodapp"
@@ -38,10 +50,22 @@
             android:text="快播下载" />
 
         <Button
+            android:id="@+id/kuaiboapp2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="快播本地下载" />
+
+        <Button
             android:id="@+id/xunleiapp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="迅雷下载" />
+
+        <Button
+            android:id="@+id/xunleiapp2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="迅雷本地下载" />
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

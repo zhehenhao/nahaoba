@@ -1,6 +1,8 @@
 package com.meizi.haokan.model;
 
-public class Person  {
+import java.io.Serializable;
+
+public class Person implements Serializable {
     public String getName() {
         return name;
     }

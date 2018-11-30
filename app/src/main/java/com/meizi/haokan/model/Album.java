@@ -1,8 +1,9 @@
 package com.meizi.haokan.model;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Album  {
+public class Album  implements Serializable {
     private long updatatime;
     private List<Picture> pictures;
     private String listurl;

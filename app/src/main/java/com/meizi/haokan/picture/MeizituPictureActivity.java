@@ -93,7 +93,7 @@ public class MeizituPictureActivity extends BaseActivity implements OnLoadMoreLi
         title=getIntent().getStringExtra(EXTRA_TITLE);
         url=getIntent().getStringExtra(EXTRA_URL);
         setSupportActionBar(meitupictoolbar);
-        meitupictoolbar.setTitle(title);
+        meitupictoolbar.setSubtitle(title);
 
 
         meitupicfab.setOnClickListener(new View.OnClickListener() {

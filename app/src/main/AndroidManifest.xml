@@ -37,9 +37,10 @@
         <activity android:name=".picture.PictureWebActivity" />
         <activity android:name=".xfplay.XfplayWebActivity" />
         <activity android:name=".qvod.QvodWebSelectActivity" />
-        <activity android:name=".online.OnlineWebActivity" />
+        <activity android:name=".online.OnlineWebSelectActivity" />
         <activity android:name=".xigua.XiguaWebActivity" />
         <activity android:name=".text.TextWebActivity" />
+        <activity android:name=".activity.BofangqiDownLoadActivity" />
         <activity
             android:name=".search.SearchActivity"
             android:label="@string/title_activity_searcher"
@@ -108,32 +109,60 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.meizi.haokan.qvod.QvodWebSelectActivity" />
         </activity>
+        <!-- android:label="@string/title_activity_meizitu_picture" -->
         <activity
             android:name=".picture.MeizituPictureActivity"
-            android:label="@string/title_activity_meizitu_picture"
             android:parentActivityName=".picture.GirlsActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.meizi.haokan.picture.GirlsActivity" />
         </activity>
+        <!-- android:label="@string/title_activity_info_album" -->
         <activity
             android:name=".picture.InfoAlbumActivity"
-            android:label="@string/title_activity_info_album"
             android:parentActivityName=".picture.PictureWebActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.meizi.haokan.picture.PictureWebActivity" />
         </activity>
+        <!-- android:label="@string/title_activity_info_picture" -->
         <activity
             android:name=".picture.InfoPictureActivity"
-            android:label="@string/title_activity_info_picture"
             android:parentActivityName=".picture.InfoAlbumActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.meizi.haokan.picture.InfoAlbumActivity" />
+        </activity>
+
+        <service
+            android:name=".service.GirlService"
+            android:exported="false" />
+        <service
+            android:name=".service.AdviceService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity
+            android:name=".X5.X5WebviewActivity"
+            android:label="@string/title_activity_x5_webview"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".online.OnlineWebActivity"
+            android:label="@string/title_activity_online_web"
+            android:parentActivityName=".online.OnlineWebSelectActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.meizi.haokan.online.OnlineWebSelectActivity" />
         </activity>
     </application>
 

@@ -203,6 +203,7 @@ public class InfoAlbumFragment extends Fragment implements OnRefreshListener, On
 
             }
         });
+        jsoup.start();
 
     }
 

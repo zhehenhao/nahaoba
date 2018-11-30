@@ -17,6 +17,7 @@ import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.FileUtils;
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.SPUtils;
+import com.blankj.utilcode.util.ToastUtils;
 import com.meizi.haokan.utils.AppUpdata;
 import com.meizi.haokan.utils.IntentHelper;
 import com.zhy.http.okhttp.OkHttpUtils;
@@ -41,10 +42,18 @@ public  class BaseActivity extends AppCompatActivity {
                     File file= (File) msg.obj;
                     startinstallApk(file);
                     break;
+                case 102:
+
+                    break;
             }
         }
     };
+
+
     public static  String newapkfile=null;
+
+
+
 
     public   void goactivity(Class clazz){
         startActivity(new Intent(this,clazz));
@@ -81,6 +90,8 @@ public  class BaseActivity extends AppCompatActivity {
 
                 }else if(jsonObject.getVersion()<version){
                     AppUtils.exitApp();
+                }else{
+
                 }
 
                 LogUtils.e(JSON.toJSONString(jsonObject));
@@ -197,22 +208,26 @@ public  class BaseActivity extends AppCompatActivity {
 
     //本地下载并安装先锋
     public void downandinstallxfplay(){
+        ToastUtils.showLong("已经开始下载，下载完成后将自动唤起安装，请点击确认安装");
         downfile("http://down.xfplay.com/xfplay.apk","xfplay.apk", true);
     }
 
     //本地下载并安装西瓜
     public void downandinstallxigua(){
+        ToastUtils.showLong("已经开始下载，下载完成后将自动唤起安装，请点击确认安装");
         downfile("http://js.client51.com/xigua.apk","xigua.apk", true);
     }
 
 
     //本地下载并安装快播
     public void downandinstallkuaibo(){
+        ToastUtils.showLong("已经开始下载，下载完成后将自动唤起安装，请点击确认安装");
         downfile("http://qd.kuaibo.com/android/QvodPlayer_V2.1.66_kbgw00003.apk","kuaibo.apk", true);
     }
 
     //本地下载并安装迅雷
     public void downandinstallxunlei(){
+        ToastUtils.showLong("已经开始下载，下载完成后将自动唤起安装，请点击确认安装");
         downfile("http://m.down.sandai.net/mobile/OfficialSite_XunLeiProductCenter.apk","xunlei.apk", true);
     }
 

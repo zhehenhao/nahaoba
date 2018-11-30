@@ -56,11 +56,12 @@ public class InfoPictureJsoup extends BaseJsoup {
         if(doc!=null){
             Elements es=doc.select("#content_news > div > img");
             for (Element e:es){
-                String img=e.attr("abs.src");
+                String img=e.attr("abs:src");
+                LogUtils.e(img);
                 Picture picture=new Picture();
                 picture.setId(id+1);
                 picture.setTitle(title);
-                picture.setReferer(ur);
+                picture.setRefer(ur);
                 picture.setImg(img);
                 pictureList.add(picture);
                 findPictureListener.onSimpleSucceed(picture);

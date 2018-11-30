@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 
+import com.blankj.utilcode.util.LogUtils;
 import com.meizi.haokan.Base.BaseContentListActivity;
 import com.meizi.haokan.R;
 
@@ -51,17 +52,19 @@ public class InfoAlbumActivity extends BaseContentListActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
-        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
+
 
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
-        mViewPager.setAdapter(mSectionsPagerAdapter);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         for(int i=0;i<titles.length;i++){
             tabLayout.addTab(tabLayout.newTab().setText(titles[i]));
-
+            InfoAlbumFragment fragment=InfoAlbumFragment.newInstance(titles[i]);
+            fragmentList.add(fragment);
         }
+        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
+        mViewPager.setAdapter(mSectionsPagerAdapter);
 
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout){
             @Override
@@ -72,7 +75,6 @@ public class InfoAlbumActivity extends BaseContentListActivity {
             }
         });
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
-
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,7 +97,7 @@ public class InfoAlbumActivity extends BaseContentListActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         int id = item.getItemId();
-
+        LogUtils.e("点击了"+id);
         switch (id){
             case R.id.action_one:
                 sort=1;
@@ -113,6 +115,8 @@ public class InfoAlbumActivity extends BaseContentListActivity {
             case R.id.action_five:
                 sort=5;
                 break;
+                default:
+                    return super.onOptionsItemSelected(item);
 
         }
         if(currentFragment==null){
@@ -135,6 +139,7 @@ public class InfoAlbumActivity extends BaseContentListActivity {
         if(currentFragment==null){
             currentFragment=fragmentList.get(currentposition);
         }
+        currentFragment.nextpage();
     }
 
     @Override
@@ -142,6 +147,7 @@ public class InfoAlbumActivity extends BaseContentListActivity {
         if(currentFragment==null){
             currentFragment=fragmentList.get(currentposition);
         }
+        currentFragment.lastpage();
 
 
     }
@@ -165,7 +171,7 @@ public class InfoAlbumActivity extends BaseContentListActivity {
         @Override
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
-            // Return a PlaceholderFragment (defined as a static inner class below).
+            // Return a OnlineViewlistFragment (defined as a static inner class below).
             return fragmentList.get(position) ;
         }
 

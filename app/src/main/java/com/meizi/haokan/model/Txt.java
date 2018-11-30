@@ -1,7 +1,9 @@
 package com.meizi.haokan.model;
 
 
-public class Txt  {
+import java.io.Serializable;
+
+public class Txt  implements Serializable {
     private  int updatatime;
     private String title;
     private String introduction;

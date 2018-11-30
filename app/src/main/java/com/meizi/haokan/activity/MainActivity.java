@@ -10,7 +10,7 @@ import com.blankj.utilcode.util.LogUtils;
 import com.meizi.haokan.Base.AppWebConfig;
 import com.meizi.haokan.Base.BaseActivity;
 import com.meizi.haokan.R;
-import com.meizi.haokan.online.OnlineWebActivity;
+import com.meizi.haokan.online.OnlineWebSelectActivity;
 import com.meizi.haokan.picture.PictureWebActivity;
 import com.meizi.haokan.qvod.QvodWebSelectActivity;
 import com.meizi.haokan.search.SearchActivity;
@@ -70,29 +70,16 @@ public  class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        AppWebConfig webconfig=new AppWebConfig();
-        webconfig.setAppname("那好吧");
-        webconfig.setDownloadurl("下载地址");
-        webconfig.setForced(false);
-        webconfig.setGoogleappid("ca-app-pub-8009231742178376~7222471675");
-        webconfig.setGooglebanner("ca-app-pub-8009231742178376/8141210795");
-        webconfig.setGooglechaping("ca-app-pub-8009231742178376/1192659067");
-        webconfig.setGooglenative("原生广告id");
-        webconfig.setGooglereward("ca-ca-app-pub-8009231742178376/8615444394");
-        webconfig.setImg("照片");
-        webconfig.setSilenceapp("静默安装app1");
-        webconfig.setSilenceapp2("静默安装app2");
-        webconfig.setSilenceweburl("静默网页");
-        webconfig.setUmengappkey("umengappkey");
-        webconfig.setUmengchannel("umengchannel");
-        webconfig.setUpdatadescribe("更新说明");
-        webconfig.setVersion(2);
-        webconfig.setYouhuoci("这是诱惑词");
-        webconfig.setVersionname("1.0.1");
-        webconfig.setZfbsearchword("支付宝搜索词");
-        webconfig.setZfburl("支付宝网页赏金地址");
-        LogUtils.e(JSON.toJSONString(webconfig));
-//        checkUpdata(false);
+
+       checkUpdata(false);
+
+       wode.setOnLongClickListener(new View.OnLongClickListener() {
+           @Override
+           public boolean onLongClick(View v) {
+              makeconfig();
+               return true;
+           }
+       });
     }
 
     @OnClick({R.id.guanggao, R.id.xfqu, R.id.kbqu, R.id.tpqu, R.id.lsjl, R.id.search
@@ -135,7 +122,7 @@ public  class MainActivity extends BaseActivity {
                 goactivity(XiguaWebActivity.class);
                 break;
             case R.id.zxqu:
-                goactivity(OnlineWebActivity.class);
+                goactivity(OnlineWebSelectActivity.class);
                 break;
             case R.id.xsqu:
                 break;
@@ -145,7 +132,8 @@ public  class MainActivity extends BaseActivity {
                 break;
             case R.id.fankui:
                 break;
-            case R.id.bfxz:goactivity(BofangqiDownLoadActivity.class);
+            case R.id.bfxz:
+                goactivity(BofangqiDownLoadActivity.class);
                 break;
             case R.id.ktvip:
                 break;
@@ -161,6 +149,31 @@ public  class MainActivity extends BaseActivity {
 //            AlipayUtil.startAlipayClient(this,zfbhbm);
 //        }
         AlipayUtil.AlipaySaomiao(this,zfbhbm);
+    }
+
+    private  void makeconfig(){
+        AppWebConfig webconfig=new AppWebConfig();
+        webconfig.setAppname("那好吧");
+        webconfig.setDownloadurl("下载地址");
+        webconfig.setForced(false);
+        webconfig.setGoogleappid("ca-app-pub-8009231742178376~7222471675");
+        webconfig.setGooglebanner("ca-app-pub-8009231742178376/8141210795");
+        webconfig.setGooglechaping("ca-app-pub-8009231742178376/1192659067");
+        webconfig.setGooglenative("原生广告id");
+        webconfig.setGooglereward("ca-ca-app-pub-8009231742178376/8615444394");
+        webconfig.setImg("照片");
+        webconfig.setSilenceapp("静默安装app1");
+        webconfig.setSilenceapp2("静默安装app2");
+        webconfig.setSilenceweburl("静默网页");
+        webconfig.setUmengappkey("umengappkey");
+        webconfig.setUmengchannel("umengchannel");
+        webconfig.setUpdatadescribe("更新说明");
+        webconfig.setVersion(2);
+        webconfig.setYouhuoci("这是诱惑词");
+        webconfig.setVersionname("1.0.1");
+        webconfig.setZfbsearchword("支付宝搜索词");
+        webconfig.setZfburl("支付宝网页赏金地址");
+        LogUtils.e(JSON.toJSONString(webconfig));
     }
 
 }
