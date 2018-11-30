@@ -1,5 +1,6 @@
 package com.meizi.haokan.jsoup;
 
+import com.meizi.haokan.listener.FindAlbumListener;
 import com.meizi.haokan.model.Album;
 
 import org.jsoup.nodes.Document;
@@ -9,14 +10,14 @@ import org.jsoup.select.Elements;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MeizituJsoup extends BaseJsoup {
+public class MeizituAlbumJsoup extends BaseJsoup {
     private String mTitle="最新";
     private  int mpage=1;
     private String murl="https://www.mzitu.com/";
     private List<Album> albumList=new ArrayList<>();
-    private FindPicturelistListener findPicturelistListener;
+    private FindAlbumListener findAlbumListener;
 
-  public MeizituJsoup(String Title, int page){
+  public MeizituAlbumJsoup(String Title, int page){
         this.mTitle=Title;
         this.mpage=page;
 
@@ -40,23 +41,24 @@ public class MeizituJsoup extends BaseJsoup {
                     album.setImg(img);
                     album.setName(name);
                     album.setContenturl(contenturl);
+                    findAlbumListener.onSimpleSucceed(album);
 //                    LogUtils.e("img:"+img+"--name:"+name+"--:contenturl"+contenturl);
                     albumList.add(album);
                 }
                 if(albumList.size()>0){
-                    findPicturelistListener.onSucceed(albumList);
+                    findAlbumListener.onSucceed(albumList);
                 }else{
-                    findPicturelistListener.onFailed("没有抓取到写真集");
+                    findAlbumListener.onFailed("没有抓取到写真集");
                 }
 
 
             }else{
-                findPicturelistListener.onFailed("抓取写真页失败");
+                findAlbumListener.onFailed("抓取写真页失败");
             }
 
 
         }catch (Exception e){
-            findPicturelistListener.onFailed(e.toString());
+            findAlbumListener.onFailed(e.toString());
         }
 
 
@@ -102,7 +104,7 @@ public class MeizituJsoup extends BaseJsoup {
       return url;
     }
 
-    public void setFindPicturelistListener(FindPicturelistListener findPicturelistListener) {
-        this.findPicturelistListener = findPicturelistListener;
+    public void setFindAlbumListener(FindAlbumListener findAlbumListener) {
+        this.findAlbumListener = findAlbumListener;
     }
 }

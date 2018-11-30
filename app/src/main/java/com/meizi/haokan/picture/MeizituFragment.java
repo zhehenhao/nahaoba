@@ -16,8 +16,8 @@ import android.view.ViewGroup;
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.meizi.haokan.R;
-import com.meizi.haokan.jsoup.FindPicturelistListener;
-import com.meizi.haokan.jsoup.MeizituJsoup;
+import com.meizi.haokan.listener.FindAlbumListener;
+import com.meizi.haokan.jsoup.MeizituAlbumJsoup;
 import com.meizi.haokan.picture.adapter.AlbumAdapter;
 import com.meizi.haokan.model.Album;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
@@ -54,9 +54,7 @@ public class MeizituFragment extends Fragment implements OnRefreshListener, OnLo
             super.handleMessage(msg);
             switch (msg.what){
                 case 2001:
-                    meizirefreshlayout.finishRefresh(1000);
-                    meizirefreshlayout.finishLoadMore(1000);
-                    adapter.notifyDataSetChanged();
+                 ToastUtils.showLong("本页写真集加载完毕");
 
                     break;
 
@@ -64,6 +62,12 @@ public class MeizituFragment extends Fragment implements OnRefreshListener, OnLo
                     meizirefreshlayout.finishRefresh(false);
                     meizirefreshlayout.finishLoadMore(false);
                     ToastUtils.showLong((String) msg.obj);
+
+                    break;
+                case  2003:
+                    meizirefreshlayout.finishRefresh(1000);
+                    meizirefreshlayout.finishLoadMore(1000);
+                    adapter.notifyDataSetChanged();
 
                     break;
             }
@@ -122,8 +126,8 @@ public class MeizituFragment extends Fragment implements OnRefreshListener, OnLo
        });
     }
    public  void requsetdata(){
-       MeizituJsoup jsoup=new MeizituJsoup(title,fpage);
-       jsoup.setFindPicturelistListener(new FindPicturelistListener() {
+       MeizituAlbumJsoup jsoup=new MeizituAlbumJsoup(title,fpage);
+       jsoup.setFindAlbumListener(new FindAlbumListener() {
            @Override
            public void onSucceed(List<Album> albumList) {
                falbumList.addAll(albumList);
@@ -141,6 +145,15 @@ public class MeizituFragment extends Fragment implements OnRefreshListener, OnLo
                msg.what=2002;
                msg.obj=e;
                uihandle.sendMessage(msg);
+           }
+
+           @Override
+           public void onSimpleSucceed(Album album) {
+               falbumList.add(album);
+               LogUtils.e(falbumList.size()+"");
+               Message msg=new Message();
+               msg.what=2003;
+                uihandle.sendMessage(msg);
            }
        });
      jsoup.start();
@@ -168,12 +181,6 @@ public class MeizituFragment extends Fragment implements OnRefreshListener, OnLo
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
-    }
-
-   public void  gopage(int s){
-        fpage=s;
-       requsetdata();
-
     }
 
     @Override

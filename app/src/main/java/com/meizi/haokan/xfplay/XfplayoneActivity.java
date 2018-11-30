@@ -28,7 +28,7 @@ import com.blankj.utilcode.util.LogUtils;
 
 import com.meizi.haokan.Base.BaseContentListActivity;
 import com.meizi.haokan.R;
-import com.meizi.haokan.jsoup.FindVideolistListener;
+import com.meizi.haokan.listener.FindVideolistListener;
 import com.meizi.haokan.jsoup.Xfweb2listJsoup;
 
 import com.meizi.haokan.model.Video;
@@ -39,7 +39,7 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import io.realm.Realm;
+
 
 import static com.meizi.haokan.Base.AppConfig.spanCount;
 
@@ -257,25 +257,25 @@ public class XfplayoneActivity extends BaseContentListActivity {
         }
 
         private void SaveVideo(final Video video) {
-            Thread thread = new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    Realm realm = Realm.getDefaultInstance();
-                    try {
-                        // ... Use the Realm instance ...
-                        realm.executeTransaction(new Realm.Transaction() {
-                            @Override
-                            public void execute(Realm realm) {
-                                realm.copyToRealmOrUpdate(video);
-                            }
-                        });
-
-                    } finally {
-                        realm.close();
-                    }
-                }
-            });
-            thread.start();
+//            Thread thread = new Thread(new Runnable() {
+//                @Override
+//                public void run() {
+//                    Realm realm = Realm.getDefaultInstance();
+//                    try {
+//                        // ... Use the Realm instance ...
+//                        realm.executeTransaction(new Realm.Transaction() {
+//                            @Override
+//                            public void execute(Realm realm) {
+//                                realm.copyToRealmOrUpdate(video);
+//                            }
+//                        });
+//
+//                    } finally {
+//                        realm.close();
+//                    }
+//                }
+//            });
+//            thread.start();
         }
 
         public void requestdata(){

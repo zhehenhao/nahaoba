@@ -17,12 +17,10 @@ import android.widget.Toast;
 
 import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.LogUtils;
-import com.blankj.utilcode.util.TimeUtils;
 import com.blankj.utilcode.util.ToastUtils;
-import com.meizi.haokan.App;
 import com.meizi.haokan.Base.BaseActivity;
 import com.meizi.haokan.R;
-import com.meizi.haokan.jsoup.FindVideoListener;
+import com.meizi.haokan.listener.FindVideoListener;
 import com.meizi.haokan.jsoup.Xfweb2Jsoup;
 import com.meizi.haokan.jsoup.Xfweb3Jsoup;
 import com.meizi.haokan.model.Video;
@@ -37,7 +35,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cc.shinichi.library.ImagePreview;
 import cc.shinichi.library.bean.ImageInfo;
-import io.realm.Realm;
+
 
 import static com.blankj.utilcode.util.AppUtils.getAppsInfo;
 
@@ -96,7 +94,7 @@ public class XfplayVideoDetailPageActivity extends BaseActivity {
     private int webtype;
     final List<ImageInfo> imageInfoList = new ArrayList<>();
     private Random random;
-    Realm realm;
+
     private Video mvideo;
 
     private Handler uihandler = new Handler() {
@@ -427,27 +425,27 @@ private  boolean isadd=false;
 
     private void saveVideo(final Video video, final boolean iscollect) {
         LogUtils.e("保存抓取的对象开始");
-        try {
-            realm = Realm.getInstance(App.config);
-            video.setUpdatatime(TimeUtils.getNowDate().toString());
-            LogUtils.e("设置时间");
-            video.setIscollect(iscollect);
-            realm.executeTransaction(new Realm.Transaction() {
-                @Override
-                public void execute(Realm realm) {
-
-                    Video mvideo = realm.copyToRealmOrUpdate(video);
-                    LogUtils.e("保存抓取的对象2");
-
-
-                }
-            });
-        } catch (Exception e) {
-        } finally {
-            LogUtils.e("关闭realm");
-            realm.close();
-            realm = null;
-        }
+//        try {
+//            realm = Realm.getInstance(App.config);
+//            video.setUpdatatime(TimeUtils.getNowDate().toString());
+//            LogUtils.e("设置时间");
+//            video.setIscollect(iscollect);
+//            realm.executeTransaction(new Realm.Transaction() {
+//                @Override
+//                public void execute(Realm realm) {
+//
+//                    Video mvideo = realm.copyToRealmOrUpdate(video);
+//                    LogUtils.e("保存抓取的对象2");
+//
+//
+//                }
+//            });
+//        } catch (Exception e) {
+//        } finally {
+//            LogUtils.e("关闭realm");
+//            realm.close();
+//            realm = null;
+//        }
 
     }
 
