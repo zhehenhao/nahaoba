@@ -22,17 +22,14 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        >
 
         <!-- <meta-data -->
         <!-- android:name=".utils.GlideCache" -->
         <!-- android:value="GlideModule" /> -->
         <activity android:name=".activity.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".picture.PictureWebActivity" />
         <activity android:name=".xfplay.XfplayWebActivity" />
@@ -164,6 +161,17 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.meizi.haokan.online.OnlineWebSelectActivity" />
         </activity>
+        <activity
+            android:name=".online.OnlineVideoContentActivity"
+            android:label="@string/title_activity_online_video_content"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".movie.MovieActivity"
+            android:label="@string/title_activity_movie"
+            android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
+        <activity android:name=".movie.XmovieContentActivity"></activity>
     </application>
 
 </manifest>

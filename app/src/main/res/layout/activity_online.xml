@@ -48,7 +48,8 @@
                 android:id="@+id/onlineweb3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="在线三区" />
+                android:text="在线三区"
+                android:visibility="gone" />
 
             <LinearLayout
                 android:id="@+id/banner"
@@ -60,19 +61,22 @@
                 android:id="@+id/onlineweb4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="在线四区" />
+                android:text="在线四区"
+                android:visibility="gone" />
 
             <Button
                 android:id="@+id/onlineweb5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="在线五区" />
+                android:text="在线五区"
+                android:visibility="gone" />
 
             <Button
                 android:id="@+id/onlineweb6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="在线六区" />
+                android:text="在线六区"
+                android:visibility="gone" />
 
 
         </LinearLayout>>

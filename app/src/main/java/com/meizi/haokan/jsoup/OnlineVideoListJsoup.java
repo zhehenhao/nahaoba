@@ -42,12 +42,15 @@ public class OnlineVideoListJsoup extends BaseJsoup {
             doc=getRequestAddHeader(geturl());
             if(doc!=null){
                 Elements elements= doc.select("#img_resize > li");
-                LogUtils.e("元素文本", "zhuaquonlinelist: "+elements.toString());
+//                LogUtils.e("元素文本", "zhuaquonlinelist: "+elements.toString());
                 for(Element e:elements){
+                    LogUtils.e( "单元: "+e.toString());
                     String  title=e.select(" p.name > a").text();
-
-                    //剧照
-                    String img=e.select(" a > img").attr("src");
+                                                           //剧照
+                    String img=e.select(" a > img").attr("abs:data-original");
+                    if(img.length()<20){
+                   img=e.select(" a > img").attr("abs:src");}
+                    LogUtils.e("图片: "+img);
                     //评分
                     String pingfen=e.select(" p.name > span").text();
 

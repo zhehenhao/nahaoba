@@ -246,4 +246,12 @@ public  class BaseActivity extends AppCompatActivity {
         }
     }
 
+    public void playvideo(String url){
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+             Uri uri = Uri.parse(url);
+            intent.setData (uri);
+            startActivity(intent);
+
+    }
+
 }

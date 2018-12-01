@@ -51,12 +51,12 @@ public class OnlineWebSelectActivity extends AppCompatActivity {
                 goOnlineWebActivity(2);
                 break;
             case R.id.onlineweb3:
-                goOnlineWebActivity(3);
+//                goOnlineWebActivity(3);
                 break;
             case R.id.banner:
                 break;
             case R.id.onlineweb4:
-                goOnlineWebActivity(4);
+//                goOnlineWebActivity(4);
                 break;
             case R.id.onlineweb5:
                 break;

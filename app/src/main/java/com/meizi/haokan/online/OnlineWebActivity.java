@@ -37,19 +37,22 @@ public class OnlineWebActivity extends BaseContentListActivity {
     private int currentposition;
     private OnlineViewlistFragment currentfragment;
     private String[] titles;
-    private String[]  web1={"","","","","","","","","","","","","","",""};
-    private String[]  web2={"","","","","","","","","","","","","","",""};
+    private String[]  web1={"全部","高清色情","成人少女","色情视频","色情爱好","女同性爱","欧洲色情","黑发女孩","金发女孩","德国色情","日本色情","成熟性爱","辣妹性爱"};
+    private String[]  web2={"双重插入","爆菊肛交","面部射精","巨大乳房","口交口爆","足交","拳交","自慰","群交","性SM","轮奸"};
     private String[]  web3={"","","","","","","","","","","","","","",""};
     private String[]  web4={"","","","","","","","","","","","","","",""};
     private int webtype=1;
+    private int sort=1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_online_web);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        mViewPager = (ViewPager) findViewById(R.id.container);
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        webtype=getIntent().getIntExtra("type",1)
+        webtype=getIntent().getIntExtra("type",1);
 
                 switch(webtype){
                     case 1:
@@ -67,10 +70,11 @@ public class OnlineWebActivity extends BaseContentListActivity {
 
                 }
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+
         for(int i=0;i<titles.length;i++){
             tabLayout.addTab(tabLayout.newTab().setText(titles[i]));
-            OnlineViewlistFragment fragment=OnlineViewlistFragment.newInstance()
+            OnlineViewlistFragment fragment=OnlineViewlistFragment.newInstance(titles[i]);
+            fragmentList.add(fragment);
         }
 
         // Create the adapter that will return a fragment for each of the three
@@ -78,19 +82,25 @@ public class OnlineWebActivity extends BaseContentListActivity {
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
         // Set up the ViewPager with the sections adapter.
-        mViewPager = (ViewPager) findViewById(R.id.container);
+
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
 
-        mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout){
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+                currentposition=position;
+                currentfragment=fragmentList.get(position);
+            }
+        });
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+              showpagedialog();
             }
         });
 
@@ -100,7 +110,7 @@ public class OnlineWebActivity extends BaseContentListActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_online_web, menu);
+        getMenuInflater().inflate(R.menu.menu_xfplaythree, menu);
         return true;
     }
 
@@ -109,17 +119,36 @@ public class OnlineWebActivity extends BaseContentListActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
+
         int id = item.getItemId();
+        switch (id){
+            case R.id.action_one:
+                sort=1;
+                break;
+            case R.id.action_two:
+                sort=2;
+                break;
+            case R.id.action_three:
+                sort=3;
+                break;
+            case R.id.action_four:
+                sort=4;
+                break;
+            case R.id.action_five:
+                sort=5;
+                break;
+            default:
+                return super.onOptionsItemSelected(item);
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
         }
+        if(currentfragment==null){
+            currentfragment=fragmentList.get(currentposition);
+        }
+       currentfragment.setSort(sort);
+//       Toast.makeText(this,"请手动刷新列表",Toast.LENGTH_LONG).show();
+        return true;
 
-        return super.onOptionsItemSelected(item);
     }
-
-
 
     /**
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
@@ -135,19 +164,33 @@ public class OnlineWebActivity extends BaseContentListActivity {
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
             // Return a OnlineViewlistFragment (defined as a static inner class below).
-            return OnlineViewlistFragment.newInstance(position + 1);
+            return fragmentList.get(position);
         }
 
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 3;
+            return fragmentList.size();
         }
     }
 
-    protected  void gotopage(int i){}
+    protected  void gotopage(int i){
+        if(currentfragment==null){
+           currentfragment=fragmentList.get(currentposition);
+        }
+        currentfragment.setPage(i);
+    }
 
-    protected  void nextpage(){}
+    protected  void nextpage(){
 
-    protected  void lastpage(){}
+        if(currentfragment==null){
+            currentfragment=fragmentList.get(currentposition);
+        }currentfragment.nextpage();
+    }
+
+    protected  void lastpage(){
+     if(currentfragment==null){
+            currentfragment=fragmentList.get(currentposition);
+     }currentfragment.lastpage();
+    }
 }

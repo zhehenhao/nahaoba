@@ -45,6 +45,9 @@
     <string name="title_activity_meizitu_picture">妹子图专辑</string>
     <string name="title_activity_info_album">InfoAlbumActivity</string>
     <string name="title_activity_info_picture">InfoPictureActivity</string>
-    <string name="title_activity_x5_webview">X5WebviewActivity</string>
+    <string name="title_activity_x5_webview">那好吧</string>
     <string name="title_activity_online_web">OnlineWebActivity</string>
+    <string name="title_activity_online_video_content">在线视频详情</string>
+    <string name="onlineViewshuoming">在线视频说明\n稍等片刻正在请求视频资源中，获取资源后下方自动显示操作按钮</string>
+    <string name="title_activity_movie">MovieActivity</string>
 </resources>

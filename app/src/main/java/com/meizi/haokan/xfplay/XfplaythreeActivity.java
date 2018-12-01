@@ -152,6 +152,9 @@ public class XfplaythreeActivity extends BaseContentListActivity {
             case R.id.action_five:
                 sort=5;
                 break;
+                default:
+          return super.onOptionsItemSelected(item);
+
         }
         currentFragmet=fragmentList.get(currentposition);
        currentFragmet.setMsort(sort);
