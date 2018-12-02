@@ -4,6 +4,7 @@ import android.app.Application;
 import android.util.Log;
 
 import com.blankj.utilcode.util.Utils;
+import com.google.android.gms.ads.MobileAds;
 import com.tencent.smtt.sdk.QbSdk;
 
 public class App extends Application {
@@ -12,6 +13,7 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         Utils.init(this);
+        MobileAds.initialize(this,"ca-app-pub-8009231742178376~7222471675");
 //         initRealm();
         QbSdk.PreInitCallback cb = new QbSdk.PreInitCallback() {
 

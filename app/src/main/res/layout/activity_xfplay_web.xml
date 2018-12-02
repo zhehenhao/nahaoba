@@ -60,19 +60,22 @@
                 android:id="@+id/xfweb4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="先锋四区" />
+                android:text="先锋四区"
+                android:visibility="gone" />
 
             <Button
                 android:id="@+id/xfweb5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="先锋五区" />
+                android:text="先锋五区"
+                android:visibility="gone" />
 
             <Button
                 android:id="@+id/xfweb6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="先锋六区" />
+                android:text="先锋六区"
+                android:visibility="gone" />
 
 
         </LinearLayout>>

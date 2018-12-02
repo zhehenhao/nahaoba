@@ -6,8 +6,10 @@ import android.content.Intent;
 
 import android.net.Uri;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.annotation.Nullable;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 
@@ -18,6 +20,13 @@ import com.blankj.utilcode.util.FileUtils;
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.SPUtils;
 import com.blankj.utilcode.util.ToastUtils;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.reward.RewardItem;
+import com.google.android.gms.ads.reward.RewardedVideoAd;
+import com.google.android.gms.ads.reward.RewardedVideoAdListener;
 import com.meizi.haokan.utils.AppUpdata;
 import com.meizi.haokan.utils.IntentHelper;
 import com.zhy.http.okhttp.OkHttpUtils;
@@ -30,7 +39,8 @@ import okhttp3.Call;
 import static com.meizi.haokan.Base.AppConfig.appfilepath;
 
 public  class BaseActivity extends AppCompatActivity {
-
+   public InterstitialAd  interstitialAd;
+   public RewardedVideoAd rewardedVideoAd;
     public static SPUtils spUtils= SPUtils.getInstance();
 
     public Handler basehandle=new Handler(){
@@ -52,8 +62,30 @@ public  class BaseActivity extends AppCompatActivity {
 
     public static  String newapkfile=null;
 
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        loadad();
+    }
 
+    @Override
+    protected void onResume() {
+        rewardedVideoAd.resume(this);
+        super.onResume();
+    }
 
+    @Override
+    protected void onPause() {
+        rewardedVideoAd.pause(this);
+        super.onPause();
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        rewardedVideoAd.destroy(this);
+        super.onDestroy();
+    }
 
     public   void goactivity(Class clazz){
         startActivity(new Intent(this,clazz));
@@ -251,6 +283,121 @@ public  class BaseActivity extends AppCompatActivity {
              Uri uri = Uri.parse(url);
             intent.setData (uri);
             startActivity(intent);
+
+    }
+    public void loadad() {
+        loadreward();
+        loadchaping();
+    }
+
+    public void loadchaping() {
+        String chapingid=spUtils.getString("googlechaping","ca-app-pub-8009231742178376/1192659067");
+        if(chapingid==null){return;}
+                   interstitialAd = new InterstitialAd(this);
+            interstitialAd.setAdUnitId(chapingid);
+            interstitialAd.setAdListener(new AdListener() {
+                @Override
+                public void onAdLoaded() {
+                    super.onAdLoaded();
+
+                }
+
+                @Override
+                public void onAdFailedToLoad(int i) {
+                    super.onAdFailedToLoad(i);
+                }
+
+                @Override
+                public void onAdClicked() {
+                    super.onAdClicked();
+                }
+
+                @Override
+                public void onAdClosed() {
+                    super.onAdClosed();
+                    interstitialAd.loadAd(new AdRequest.Builder().build());
+                }
+
+                @Override
+                public void onAdLeftApplication() {
+                    super.onAdLeftApplication();
+                }
+
+                @Override
+                public void onAdOpened() {
+                    super.onAdOpened();
+                }
+
+
+            });
+            interstitialAd.loadAd(new AdRequest.Builder().build());
+
+
+    }
+
+    public void loadreward() {
+        final String rewardid=spUtils.getString("googlereward","ca-ca-app-pub-8009231742178376/8615444394");
+        LogUtils.e("谷歌激励广告："+rewardid);
+        rewardedVideoAd=MobileAds.getRewardedVideoAdInstance(this);
+        rewardedVideoAd.setRewardedVideoAdListener(new RewardedVideoAdListener() {
+            @Override
+            public void onRewardedVideoAdLoaded() {
+
+            }
+
+            @Override
+            public void onRewardedVideoAdOpened() {
+
+            }
+
+            @Override
+            public void onRewardedVideoStarted() {
+
+            }
+
+            @Override
+            public void onRewardedVideoAdClosed() {
+//                rewardedVideoAd.loadAd(rewardid,new AdRequest.Builder().build());
+            }
+
+            @Override
+            public void onRewarded(RewardItem rewardItem) {
+
+            }
+
+            @Override
+            public void onRewardedVideoAdLeftApplication() {
+
+            }
+
+            @Override
+            public void onRewardedVideoAdFailedToLoad(int i) {
+
+            }
+
+            @Override
+            public void onRewardedVideoCompleted() {
+
+            }
+        });
+        rewardedVideoAd.loadAd("ca-ca-app-pub-3940256099942544/5224354917",new AdRequest.Builder().build());
+
+    }
+public void showreward(){
+        if(rewardedVideoAd.isLoaded()){
+            rewardedVideoAd.show();
+        }else{
+            loadreward();
+        }
+}
+
+    public void showchaping(){
+          if(interstitialAd.isLoaded()){
+              interstitialAd.show();
+          }else{
+              loadchaping();
+
+          }
 
     }
 

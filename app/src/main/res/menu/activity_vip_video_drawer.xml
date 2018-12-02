@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/jie1"
+
+            android:title="接口1" />
+        <item
+            android:id="@+id/jie2"
+
+            android:title="接口2" />
+        <item
+            android:id="@+id/jie3"
+
+            android:title="接口3" />
+        <item
+            android:id="@+id/jie4"
+
+            android:title="接口4" />
+        <item
+            android:id="@+id/jie5"
+
+            android:title="接口5" />
+        <item
+            android:id="@+id/jie6"
+
+            android:title="接口6" />
+        <item
+        android:id="@+id/jie7"
+
+        android:title="接口7" />
+        <item
+            android:id="@+id/jie8"
+
+            android:title="接口8" />
+        <item
+            android:id="@+id/jie9"
+
+            android:title="接口9" />
+        <item
+            android:id="@+id/jie10"
+
+            android:title="接口10" />
+        <item
+            android:id="@+id/jie11"
+
+            android:title="接口11" />
+        <item
+            android:id="@+id/jie12"
+
+            android:title="接口12" />
+        <item
+            android:id="@+id/jie13"
+
+            android:title="接口13" />
+        <item
+            android:id="@+id/jie14"
+
+            android:title="接口14" />
+        <item
+            android:id="@+id/jie15"
+
+            android:title="接口15" />
+        <item
+            android:id="@+id/jie16"
+
+            android:title="接口16" />
+        <item
+            android:id="@+id/jie17"
+
+            android:title="接口17" />
+
+
+
+    </group>
+
+
+
+</menu>

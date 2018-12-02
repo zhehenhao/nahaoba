@@ -1,6 +1,7 @@
 package com.meizi.haokan.X5;
 
 import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -26,13 +27,35 @@ public class X5WebviewActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private X5WebView x5WebView;
-    private String homeurl="https://hao.360.cn/?src=lm&ls=n7303c05692";
+    private String homeurl="http://u6.gg/fEG8f";
     private String tengxunurl="https://m.v.qq.com/index.html";
     private String aiqiyiurl="http://m.iqiyi.com/";
     private String youkuurl="https://www.youku.com/";
+ private Context context;
+
+    private String[] jiekous={"http://api.baiyug.cn/vip/index.php?url=",
+            "http://www.vipjiexi.com/yun.php?url=",
+            "http://api.nepian.com/ckparse/?url=",
+            "http://yun.mt2t.com/yun?url=",
+            "http://y.mt2t.com/lines?url=",
+            "http://www.sfsft.com/video.php?url=",
+            "http://www.82190555.com/video.php?url=",
+            "http://2.jx.72du.com/video.php?url=",
+            "http://jx.vgoodapi.com/jx.php?url=",
+            "http://www.dgua.xyz/webcloud/?url=",
+            "https://2wk.com/vip.php?url=",
+            "http://vip.jlsprh.com/index.php?url=",
+            "http://jiexi.071811.cc/jx.php?url=",
+            "http://jiexi.92fz.cn/player/vip.php?url=",
+            "http://api.baiyug.cn/vip/index.php?url=",
+            "http://www.82190555.com/index/qqvod.php?url=",
+            "http://www.97panda.com/kkflv/index.php?url="
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        context=this;
         setContentView(R.layout.activity_x5_webview);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -41,8 +64,7 @@ public class X5WebviewActivity extends BaseActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+//                VipVideoActivity.showvipvideo(context,x5WebView.getUrl());
             }
         });
 
@@ -55,7 +77,7 @@ public class X5WebviewActivity extends BaseActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         x5WebView=findViewById(R.id.x5webview);
-        x5WebView.loadUrl("http://m.xbiquge.la/");
+        x5WebView.loadUrl(homeurl);
     }
 
     @Override
@@ -137,4 +159,59 @@ public class X5WebviewActivity extends BaseActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
+//
+//     case R.id.jie1:
+//    setjiekou(1);
+//        break;
+//    case R.id.jie2:
+//    setjiekou(2);
+//        break;
+//    case R.id.jie3:
+//    setjiekou(3);
+//        break;
+//    case R.id.jie4:
+//    setjiekou(4);
+//        break;
+//    case R.id.jie5:
+//    setjiekou(5);
+//        break;
+//    case R.id.jie6:
+//    setjiekou(6);
+//        break;
+//    case R.id.jie7:
+//    setjiekou(7);
+//        break;
+//    case R.id.jie8:
+//    setjiekou(8);
+//        break;
+//    case R.id.jie9:
+//    setjiekou(9);
+//        break;
+//    case R.id.jie10:
+//    setjiekou(10);
+//        break;
+//    case R.id.jie11:
+//    setjiekou(11);
+//        break;
+//    case R.id.jie12:
+//    setjiekou(12);
+//        break;
+//    case R.id.jie13:
+//    setjiekou(13);
+//
+//        break;
+//    case R.id.jie14:
+//    setjiekou(14);
+//        break;
+//    case R.id.jie15:
+//    setjiekou(15);
+//        break;
+//    case R.id.jie16:
+//    setjiekou(16);
+//        break;
+//    case R.id.jie17:
+//    setjiekou(17);
+//        break;
 }

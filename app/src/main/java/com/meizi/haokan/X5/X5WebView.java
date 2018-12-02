@@ -17,6 +17,12 @@ import com.tencent.smtt.sdk.WebViewClient;
 
 public class X5WebView extends WebView {
 	TextView title;
+	WebSettings webSetting;
+	public final static int android=1;
+	public final static int iphone=2;
+	public final static int pc=3;
+	public final static int weixin=4;
+
 	private WebViewClient client = new WebViewClient() {
 		/**
 		 * 防止加载网页时调起系统浏览器
@@ -37,8 +43,34 @@ public class X5WebView extends WebView {
 		this.getView().setClickable(true);
 	}
 
+
+	public void setUserAgent(int i){
+		if(i==1){
+
+		}else if(i==2){
+			setUserAgent(" \tMozilla/5.0 (iPhone; CPU iPhone OS 8_3 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Version/8.0 Mobile/12F70 Safari/600.1.4");
+
+		}else if(i==3){
+			setUserAgent("Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/30.0.1599.101 Safari/537.36");
+		}else if(i==4){
+			String weixinurl=getnowUserAgent()+" MicroMessenger/6.6.7";
+			setUserAgent(weixinurl);
+		}
+	}
+	public String getnowUserAgent(){
+		if(webSetting==null){
+			webSetting=getSettings();
+		}
+		return webSetting.getUserAgentString();
+	}
+
+	public void setUserAgent(String userAgent){
+		if(webSetting==null){
+			webSetting = this.getSettings();}
+			webSetting.setUserAgent(userAgent);
+	}
 	private void initWebViewSettings() {
-		WebSettings webSetting = this.getSettings();
+		 webSetting = this.getSettings();
 		webSetting.setJavaScriptEnabled(true);
 		webSetting.setJavaScriptCanOpenWindowsAutomatically(true);
 		webSetting.setAllowFileAccess(true);
@@ -65,25 +97,25 @@ public class X5WebView extends WebView {
 	@Override
 	protected boolean drawChild(Canvas canvas, View child, long drawingTime) {
 		boolean ret = super.drawChild(canvas, child, drawingTime);
-		canvas.save();
-		Paint paint = new Paint();
-		paint.setColor(0x7fff0000);
-		paint.setTextSize(24.f);
-		paint.setAntiAlias(true);
-		if (getX5WebViewExtension() != null) {
-			canvas.drawText(this.getContext().getPackageName() + "-pid:"
-					+ android.os.Process.myPid(), 10, 50, paint);
-			canvas.drawText(
-					"X5  Core:" + QbSdk.getTbsVersion(this.getContext()), 10,
-					100, paint);
-		} else {
-			canvas.drawText(this.getContext().getPackageName() + "-pid:"
-					+ android.os.Process.myPid(), 10, 50, paint);
-			canvas.drawText("Sys Core", 10, 100, paint);
-		}
-		canvas.drawText(Build.MANUFACTURER, 10, 150, paint);
-		canvas.drawText(Build.MODEL, 10, 200, paint);
-		canvas.restore();
+//		canvas.save();
+//		Paint paint = new Paint();
+//		paint.setColor(0x7fff0000);
+//		paint.setTextSize(24.f);
+//		paint.setAntiAlias(true);
+//		if (getX5WebViewExtension() != null) {
+//			canvas.drawText(this.getContext().getPackageName() + "-pid:"
+//					+ android.os.Process.myPid(), 10, 50, paint);
+//			canvas.drawText(
+//					"X5  Core:" + QbSdk.getTbsVersion(this.getContext()), 10,
+//					100, paint);
+//		} else {
+//			canvas.drawText(this.getContext().getPackageName() + "-pid:"
+//					+ android.os.Process.myPid(), 10, 50, paint);
+//			canvas.drawText("Sys Core", 10, 100, paint);
+//		}
+//		canvas.drawText(Build.MANUFACTURER, 10, 150, paint);
+//		canvas.drawText(Build.MODEL, 10, 200, paint);
+//		canvas.restore();
 		return ret;
 	}
 

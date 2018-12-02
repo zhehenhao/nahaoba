@@ -68,4 +68,6 @@ dependencies {
     implementation 'com.zhy:okhttputils:2.6.2'
     //    implementation  'com.github.Aspsine:IRecyclerView:0.0.7'
     implementation files('libs/tbs_sdk_thirdapp_v3.6.0.1371_43624_sharewithdownload_withoutGame_obfs_20181106_121046.jar')
+    implementation 'com.github.bifan-wei:HwTxtReader:V2.1.1'
+    implementation 'com.google.android.gms:play-services-ads:17.1.1'
 }

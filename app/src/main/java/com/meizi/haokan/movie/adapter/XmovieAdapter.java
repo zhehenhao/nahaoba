@@ -20,12 +20,14 @@ public class XmovieAdapter extends RecyclerView.Adapter<XmovieViewHolder> {
     public XmovieAdapter(Context context, List<Xmovie> xmovieList){
         this.context=context;
         this.xmovieList=xmovieList;
+
     }
+
+
     @NonNull
     @Override
     public XmovieViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view =LayoutInflater.from(context).inflate(R.layout.item_xmovie,parent,false);
-
         return new XmovieViewHolder(view);
     }
 
@@ -45,6 +47,6 @@ public class XmovieAdapter extends RecyclerView.Adapter<XmovieViewHolder> {
 
     @Override
     public int getItemCount() {
-        return 0;
+        return xmovieList.size();
     }
 }

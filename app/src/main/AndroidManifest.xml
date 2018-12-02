@@ -22,15 +22,15 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        >
+        android:theme="@style/AppTheme">
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-8009231742178376~7222471675"/>
 
         <!-- <meta-data -->
         <!-- android:name=".utils.GlideCache" -->
         <!-- android:value="GlideModule" /> -->
-        <activity android:name=".activity.MainActivity">
-
-        </activity>
+        <activity android:name=".activity.MainActivity" />
         <activity android:name=".picture.PictureWebActivity" />
         <activity android:name=".xfplay.XfplayWebActivity" />
         <activity android:name=".qvod.QvodWebSelectActivity" />
@@ -168,10 +168,16 @@
         <activity
             android:name=".movie.MovieActivity"
             android:label="@string/title_activity_movie"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
-        <activity android:name=".movie.XmovieContentActivity"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".movie.XmovieContentActivity" />
+        <activity
+            android:name=".text.TextWeboneActivity"
+            android:label="@string/title_activity_text_webone"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".text.TxtContentActivity"
+            android:label="@string/title_activity_txt_content"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

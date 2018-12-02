@@ -42,13 +42,15 @@
                 android:id="@+id/textweb2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="文字二区" />
+                android:text="文字二区"
+                android:visibility="gone" />
 
             <Button
                 android:id="@+id/textweb3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="文字三区" />
+                android:text="文字三区"
+                android:visibility="gone" />
 
             <LinearLayout
                 android:id="@+id/banner"
@@ -60,19 +62,22 @@
                 android:id="@+id/textweb4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="文字四区" />
+                android:text="文字四区"
+                android:visibility="gone" />
 
             <Button
                 android:id="@+id/textweb5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="文字五区" />
+                android:text="文字五区"
+                android:visibility="gone" />
 
             <Button
                 android:id="@+id/textweb6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="文字六区" />
+                android:text="文字六区"
+                android:visibility="gone" />
 
 
         </LinearLayout>>

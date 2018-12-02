@@ -15,4 +15,7 @@
     <color name="translucence">#506050</color>
     <color name="bg_gray">#e2e2e2</color>
     <color name="green">#09f332</color>
+    <color name="qianhuang">#69f3e926</color>
+
+    <color name="black_overlay">#66000000</color>
 </resources>

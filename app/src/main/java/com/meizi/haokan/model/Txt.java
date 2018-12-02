@@ -4,13 +4,13 @@ package com.meizi.haokan.model;
 import java.io.Serializable;
 
 public class Txt  implements Serializable {
-    private  int updatatime;
+    private  String updatatime;
     private String title;
     private String introduction;
     private String content;
     private  long  lastreadtime;
     private  long  readtimeprogress;
-    private String img;
+    private String  img;
     private Boolean iscollect;
     private String listurl;  //从什么列表也抓取的
     private String contenturl; //内容页面
@@ -37,11 +37,11 @@ public class Txt  implements Serializable {
 
 
 
-    public int getUpdatatime() {
+    public String getUpdatatime() {
         return updatatime;
     }
 
-    public void setUpdatatime(int updatatime) {
+    public void setUpdatatime(String updatatime) {
         this.updatatime = updatatime;
     }
 

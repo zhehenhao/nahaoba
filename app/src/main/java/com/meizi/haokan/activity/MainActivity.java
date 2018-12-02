@@ -14,6 +14,7 @@ import com.meizi.haokan.online.OnlineWebSelectActivity;
 import com.meizi.haokan.picture.PictureWebActivity;
 import com.meizi.haokan.qvod.QvodWebSelectActivity;
 import com.meizi.haokan.search.SearchActivity;
+import com.meizi.haokan.text.TextWebActivity;
 import com.meizi.haokan.utils.AlipayUtil;
 import com.meizi.haokan.xfplay.XfplayWebActivity;
 import com.meizi.haokan.xigua.XiguaWebActivity;
@@ -125,12 +126,15 @@ public  class MainActivity extends BaseActivity {
                 goactivity(OnlineWebSelectActivity.class);
                 break;
             case R.id.xsqu:
+                goactivity(TextWebActivity.class);
                 break;
             case R.id.wdsc:
+                showreward();
                 break;
             case R.id.qchc:
                 break;
             case R.id.fankui:
+                showchaping();
                 break;
             case R.id.bfxz:
                 goactivity(BofangqiDownLoadActivity.class);
