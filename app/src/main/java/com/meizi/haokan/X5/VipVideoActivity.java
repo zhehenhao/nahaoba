@@ -6,6 +6,7 @@ import android.content.res.Configuration;
 import android.graphics.PixelFormat;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.PowerManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
@@ -20,6 +21,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.blankj.utilcode.util.BarUtils;
@@ -53,7 +55,7 @@ public class VipVideoActivity extends BaseActivity
     private X5WebView x5WebView;
     private final Handler mHideHandler = new Handler();
     private static final int AUTO_HIDE_DELAY_MILLIS = 3000;
-    private static final int UI_ANIMATION_DELAY = 300;
+
 
     private boolean mVisible;
 //    private final Runnable mHidePart2Runnable = new Runnable() {
@@ -91,6 +93,8 @@ public class VipVideoActivity extends BaseActivity
 //        }
 //    };
  public Window window;
+
+    @SuppressLint("InvalidWakeLockTag")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -101,6 +105,7 @@ public class VipVideoActivity extends BaseActivity
 
         window=getWindow();
         window.setFormat(PixelFormat.TRANSLUCENT);
+        window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -123,10 +128,17 @@ public class VipVideoActivity extends BaseActivity
         x5WebView=findViewById(R.id.x5webview);
 //        x5WebView.setOnTouchListener(mDelayHideTouchListener);
         x5WebView.setUserAgent(3);
-        x5WebView.loadUrl(vipjiekou+videourl);
+        if(isvipurl(videourl)){
+        x5WebView.loadUrl(vipjiekou+videourl);}else {
+            x5WebView.loadUrl(videourl);
+        }
         mHideHandler.postDelayed(mHideRunnable, 20*1000);
+
     }
 
+    private boolean isvipurl(String videourl) {
+        return videourl.contains("iqiyi")||videourl.contains("v.qq")||videourl.contains("youku");
+    }
 
 
     private static final boolean AUTO_HIDE = true;

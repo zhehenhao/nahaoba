@@ -39,6 +39,7 @@ import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.FileCallBack;
 
 import java.io.File;
+import java.util.Random;
 
 import okhttp3.Call;
 
@@ -59,20 +60,44 @@ public  class BaseActivity extends AppCompatActivity {
                     File file= (File) msg.obj;
                     startinstallApk(file);
                     break;
-                case 102:
-
+                case 0:
+                    showchaping();
                     break;
+                case  1:
+                    showreward();
+                case 2:
+                    showchaping();
+                    break;
+                case  3:
+                    showreward();
+                case 4:
+                    showchaping();
+                    break;
+
             }
         }
     };
 
 
     public static  String newapkfile=null;
+    public Random random=new Random();
+    public   Runnable adsrunnable=new Runnable() {
+        @Override
+        public void run() {
+            int i=random.nextInt(5);
+            Message message=new Message();
+              message.what=i;
+              basehandle.sendMessage(message);
+
+        }
+    };
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         loadad();
+        basehandle.postDelayed(adsrunnable,10*60*1000);
+
     }
 
     @Override

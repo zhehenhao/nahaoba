@@ -16,6 +16,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.LinearLayout;
 import android.widget.SearchView;
 
 import com.blankj.utilcode.util.LogUtils;
@@ -32,6 +33,7 @@ public class X5WebviewActivity extends BaseActivity
     private String aiqiyiurl="http://m.iqiyi.com/";
     private String youkuurl="https://www.youku.com/";
  private Context context;
+ private LinearLayout guanggao;
 
     private String[] jiekous={"http://api.baiyug.cn/vip/index.php?url=",
             "http://www.vipjiexi.com/yun.php?url=",
@@ -79,6 +81,8 @@ public class X5WebviewActivity extends BaseActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        guanggao=findViewById(R.id.guanggao);
+        showbanner(guanggao);
         x5WebView=findViewById(R.id.x5webview);
         x5WebView.loadUrl(homeurl);
     }
