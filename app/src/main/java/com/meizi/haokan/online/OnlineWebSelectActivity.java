@@ -53,21 +53,29 @@ public class OnlineWebSelectActivity extends BaseActivity {
                 goOnlineWebActivity(2);
                 break;
             case R.id.onlineweb3:
-//                goOnlineWebActivity(3);
+              goOnlineWeb2Activity(1);
                 break;
             case R.id.banner:
+//                goOnlineWebActivity(1);
                 break;
             case R.id.onlineweb4:
-//                goOnlineWebActivity(4);
+              goOnlineWeb2Activity(2);
                 break;
             case R.id.onlineweb5:
+                goOnlineWeb2Activity(3);
                 break;
             case R.id.onlineweb6:
+                goOnlineWeb2Activity(4);
                 break;
         }
     }
   public void  goOnlineWebActivity(int i){
         Intent intent=new Intent(this,OnlineWebActivity.class);
+        intent.putExtra("type",i);
+        this.startActivity(intent);
+    }
+    public void  goOnlineWeb2Activity(int i){
+        Intent intent=new Intent(this,OnlineWeb2Activity.class);
         intent.putExtra("type",i);
         this.startActivity(intent);
     }

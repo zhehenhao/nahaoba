@@ -7,9 +7,15 @@ import android.graphics.Paint;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient;
+import com.tencent.smtt.export.external.interfaces.JsResult;
+import com.tencent.smtt.sdk.CookieSyncManager;
 import com.tencent.smtt.sdk.QbSdk;
+import com.tencent.smtt.sdk.WebChromeClient;
 import com.tencent.smtt.sdk.WebSettings;
 import com.tencent.smtt.sdk.WebSettings.LayoutAlgorithm;
 import com.tencent.smtt.sdk.WebView;
@@ -22,21 +28,13 @@ public class X5WebView extends WebView {
 	public final static int iphone=2;
 	public final static int pc=3;
 	public final static int weixin=4;
-
-	private WebViewClient client = new WebViewClient() {
-		/**
-		 * 防止加载网页时调起系统浏览器
-		 */
-		public boolean shouldOverrideUrlLoading(WebView view, String url) {
-			view.loadUrl(url);
-			return true;
-		}
-	};
-
+    public Context context;
 	@SuppressLint("SetJavaScriptEnabled")
 	public X5WebView(Context arg0, AttributeSet arg1) {
 		super(arg0, arg1);
+		context=arg0;
 		this.setWebViewClient(client);
+		this.setWebChromeClient(webChromeClient);
 		// this.setWebChromeClient(chromeClient);
 		// WebStorage webStorage = WebStorage.getInstance();
 		initWebViewSettings();
@@ -76,7 +74,7 @@ public class X5WebView extends WebView {
 		webSetting.setAllowFileAccess(true);
 		webSetting.setLayoutAlgorithm(LayoutAlgorithm.NARROW_COLUMNS);
 		webSetting.setSupportZoom(true);
-		webSetting.setBuiltInZoomControls(true);
+		webSetting.setBuiltInZoomControls(false);
 		webSetting.setUseWideViewPort(true);
 		webSetting.setSupportMultipleWindows(true);
 		// webSetting.setLoadWithOverviewMode(true);
@@ -88,8 +86,9 @@ public class X5WebView extends WebView {
 		// webSetting.setPageCacheCapacity(IX5WebSettings.DEFAULT_CACHE_CAPACITY);
 		webSetting.setPluginState(WebSettings.PluginState.ON_DEMAND);
 		// webSetting.setRenderPriority(WebSettings.RenderPriority.HIGH);
-		webSetting.setCacheMode(WebSettings.LOAD_NO_CACHE);
-
+		webSetting.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK );
+		CookieSyncManager.createInstance(context);
+		CookieSyncManager.getInstance().sync();
 		// this.getSettingsExtension().setPageCacheCapacity(IX5WebSettings.DEFAULT_CACHE_CAPACITY);//extension
 		// settings 的设计
 	}
@@ -123,5 +122,67 @@ public class X5WebView extends WebView {
 		super(arg0);
 		setBackgroundColor(85621);
 	}
+
+
+	private WebViewClient client = new WebViewClient() {
+		/**
+		 * 防止加载网页时调起系统浏览器
+		 */
+		public boolean shouldOverrideUrlLoading(WebView view, String url) {
+			view.loadUrl(url);
+			return true;
+		}
+	};
+	private WebChromeClient webChromeClient=new WebChromeClient() {
+
+		@Override
+		public boolean onJsConfirm(WebView arg0, String arg1, String arg2,
+								   JsResult arg3) {
+			return super.onJsConfirm(arg0, arg1, arg2, arg3);
+		}
+
+//		View myVideoView;
+//		View myNormalView;
+//		IX5WebChromeClient.CustomViewCallback callback;
+//
+//		// /////////////////////////////////////////////////////////
+//		//
+//		/**
+//		 * 全屏播放配置
+//		 */
+//		@Override
+//		public void onShowCustomView(View view,
+//									 IX5WebChromeClient.CustomViewCallback customViewCallback) {
+//			FrameLayout normalView = this.myNormalView;
+//			ViewGroup viewGroup = (ViewGroup) normalView.getParent();
+//			viewGroup.removeView(normalView);
+//			viewGroup.addView(view);
+//			myVideoView = view;
+//			myNormalView = normalView;
+//			callback = customViewCallback;
+//		}
+//
+//		@Override
+//		public void onHideCustomView() {
+//			if (callback != null) {
+//				callback.onCustomViewHidden();
+//				callback = null;
+//			}
+//			if (myVideoView != null) {
+//				ViewGroup viewGroup = (ViewGroup) myVideoView.getParent();
+//				viewGroup.removeView(myVideoView);
+//				viewGroup.addView(myNormalView);
+//			}
+//		}
+
+		@Override
+		public boolean onJsAlert(WebView arg0, String arg1, String arg2,
+								 JsResult arg3) {
+			/**
+			 * 这里写入你自定义的window alert
+			 */
+			return super.onJsAlert(null, arg1, arg2, arg3);
+		}
+	};
 
 }

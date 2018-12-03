@@ -71,7 +71,6 @@ public  class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-
        checkUpdata(false);
 
        wode.setOnLongClickListener(new View.OnLongClickListener() {
@@ -115,10 +114,10 @@ public  class MainActivity extends BaseActivity {
                checkUpdata(true);
                 break;
             case R.id.xzsp:
-                gozfb("https://qr.alipay.com/c1x05795ok8ukzkj1kjgz16");
+
                 break;
             case R.id.viptequan:
-                 gozfb("https://render.alipay.com/p/f/fd-j6lzqrgm/guiderofmklvtvw.html?channel=qrCode&shareId=2088202343178053&sign=mlLiV8arShoegqRP4o3FmJxj%2BIVGRGMOgVlFZP7fcj4%3D&scene=offlinePaymentNewSns&campStr=p1j%2BdzkZl018zOczaHT4Z5CLdPVCgrEXq89JsWOx1gdt05SIDMPg3PTxZbdPw9dL&token=c1x05795ok8ukzkj1kjgz16");
+
               break;
             case R.id.xgqu:
                 goactivity(XiguaWebActivity.class);
@@ -143,7 +142,7 @@ public  class MainActivity extends BaseActivity {
             case R.id.ktvip:
                 break;
             case R.id.wode:
-                AlipayUtil.AlipayOpenUrl(this,"https://qr.alipay.com/c1x05795ok8ukzkj1kjgz16");
+
                 break;
         }
     }

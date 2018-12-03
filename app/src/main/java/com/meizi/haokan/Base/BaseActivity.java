@@ -50,7 +50,7 @@ public  class BaseActivity extends AppCompatActivity {
    public RewardedVideoAd googlerewardedVideoAd;
    public AdView googleadView;
     public static SPUtils spUtils= SPUtils.getInstance();
-
+   public static int adstime=10*60*1000;
     public Handler basehandle=new Handler(){
         @Override
         public void handleMessage(Message msg) {
@@ -96,7 +96,7 @@ public  class BaseActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         loadad();
-        basehandle.postDelayed(adsrunnable,10*60*1000);
+        basehandle.postDelayed(adsrunnable,adstime);
 
     }
 
@@ -450,7 +450,7 @@ public void showreward(){
 
     }
 
-      public  void  showbanner(ViewGroup view){
+      public  void  showbanner(final ViewGroup view){
           final String bannerid=spUtils.getString("googlereward","ca-app-pub-8009231742178376/8141210795");
         googleadView=new AdView(this);
         googleadView.setAdUnitId(bannerid);
@@ -485,11 +485,12 @@ public void showreward(){
             @Override
             public void onAdLoaded() {
                 super.onAdLoaded();
+                view.addView(googleadView);
             }
         });
 
         googleadView.loadAd(new AdRequest.Builder().build());
-        view.addView(googleadView);
+
 
       }
 }

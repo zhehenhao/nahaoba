@@ -180,23 +180,27 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".X5.VipVideoActivity"
-            android:windowSoftInputMode="stateHidden|adjustResize"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:label="@string/title_activity_vip_video"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
             android:name="com.tencent.smtt.sdk.VideoActivity"
+            android:alwaysRetainTaskState="true"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:exported="false"
-            android:launchMode="singleTask"
-            android:alwaysRetainTaskState="true">
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="com.tencent.smtt.tbs.video.PLAY" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-
         </activity>
+        <activity
+            android:name=".online.OnlineWeb2Activity"
+            android:label="@string/title_activity_online_web2"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".online.OnlineVideoContent2Activity"></activity>
     </application>
 
 </manifest>

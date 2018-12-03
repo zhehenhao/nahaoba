@@ -1,0 +1,27 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.meizi.haokan.online.OnlineWeb2Activity">
+
+    <item
+        android:id="@+id/time"
+        android:title="上传时间" />
+    <item
+        android:id="@+id/playtime"
+        android:title="播放次数" />
+    <item
+        android:id="@+id/rate"
+        android:title="评级人数" />
+    <item
+        android:id="@+id/discuss"
+        android:title="评论次数" />
+    <item
+        android:id="@+id/download"
+        android:title="下载次数" />
+    <item
+        android:id="@+id/shichang"
+        android:title="时长" />
+    <item
+        android:id="@+id/yikan"
+        android:title="已观看" />
+</menu>

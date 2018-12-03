@@ -3,10 +3,10 @@ apply plugin: 'com.android.application'
 android {
     signingConfigs {
         wangdong {
-            keyAlias 'wangdong'
-            keyPassword 'wangdong'
-            storeFile file('D:/签名文件/wangdong.jks')
-            storePassword 'wangdong'
+            keyAlias 'nahaoba'
+            keyPassword 'nahaoba'
+            storeFile file('D:/签名文件/nahaoba.jks')
+            storePassword 'nahaoba'
         }
     }
     lintOptions {

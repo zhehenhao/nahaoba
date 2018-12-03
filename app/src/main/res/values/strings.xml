@@ -56,4 +56,5 @@
     <string name="title_activity_text_webone">TextWeboneActivity</string>
     <string name="title_activity_txt_content">TxtContentActivity</string>
     <string name="zzhqzy">正在获取资源 ，请稍等片刻，请求内容成功后会自动进入阅读界面，如果超过30秒未请求到资源，请点击其他内容查看</string>
+    <string name="title_activity_online_web2">AV淘宝</string>
 </resources>

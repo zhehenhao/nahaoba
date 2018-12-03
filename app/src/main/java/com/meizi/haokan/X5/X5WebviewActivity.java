@@ -19,6 +19,7 @@ import android.view.MenuItem;
 import android.widget.LinearLayout;
 import android.widget.SearchView;
 
+import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.LogUtils;
 import com.meizi.haokan.Base.BaseActivity;
 import com.meizi.haokan.R;
@@ -93,9 +94,17 @@ public class X5WebviewActivity extends BaseActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+           webviewback();
+           // super.onBackPressed();
         }
     }
+
+    private void webviewback() {
+        if(x5WebView.canGoBack()){
+            x5WebView.goBack();
+        }
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -131,7 +140,8 @@ public class X5WebviewActivity extends BaseActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.btnexit) {
+            AppUtils.exitApp();
             return true;
         }
 
