@@ -36,6 +36,7 @@ public class XfplayWebActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_xfplay_web);
         ButterKnife.bind(this);
+        showbanner(guanggao);
     }
 
     @OnClick({R.id.guanggao, R.id.xfweb1, R.id.xfweb2, R.id.xfweb3, R.id.banner, R.id.xfweb4, R.id.xfweb5, R.id.xfweb6})

@@ -8,6 +8,7 @@
     tools:context=".X5.VipVideoActivity"
     tools:showIn="@layout/app_bar_vip_video">
 <com.meizi.haokan.X5.X5WebView
+    android:id="@+id/x5webview"
     android:layout_width="match_parent"
     android:layout_height="match_parent"></com.meizi.haokan.X5.X5WebView>
 </android.support.constraint.ConstraintLayout>

@@ -5,12 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.widget.Chronometer;
+import android.widget.LinearLayout;
 
 import com.bifan.txtreaderlib.ui.HwTxtPlayActivity;
 import com.blankj.utilcode.util.ToastUtils;
@@ -22,22 +19,30 @@ import com.meizi.haokan.model.Txt;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 public class TxtContentActivity extends BaseActivity {
 
 
-    public  static void startReadTxt(Context context,String url){
-        Intent intent=new Intent(context,TxtContentActivity.class);
-        intent.putExtra("url",url);
+    @BindView(R.id.guanggao)
+    LinearLayout guanggao;
+
+    public static void startReadTxt(Context context, String url) {
+        Intent intent = new Intent(context, TxtContentActivity.class);
+        intent.putExtra("url", url);
         context.startActivity(intent);
     }
-  private String content;
+
+    private String content;
     private String txtconurl;
-    private Handler uihandler=new Handler(){
+    private Handler uihandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
-            switch (msg.what){
+            switch (msg.what) {
                 case 4301:
-                    HwTxtPlayActivity.loadStr(TxtContentActivity.this,content);
+                    HwTxtPlayActivity.loadStr(TxtContentActivity.this, content);
                     break;
                 case 4302:
                     ToastUtils.showLong((String) msg.obj);
@@ -49,11 +54,12 @@ public class TxtContentActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        txtconurl=getIntent().getStringExtra("url");
+        txtconurl = getIntent().getStringExtra("url");
         setContentView(R.layout.activity_txt_content);
+        ButterKnife.bind(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        TxtContentJsoup jsoup=new TxtContentJsoup(txtconurl);
+        TxtContentJsoup jsoup = new TxtContentJsoup(txtconurl);
         jsoup.setFindTxtListener(new FindTxtListener() {
             @Override
             public void onSucceed(List<Txt> txtList) {
@@ -62,26 +68,29 @@ public class TxtContentActivity extends BaseActivity {
 
             @Override
             public void onSimplySucceed(Txt txt) {
-            content=txt.getContent();
-                Message message=new Message();
-                message.what=4301;
+                content = txt.getContent();
+                Message message = new Message();
+                message.what = 4301;
                 uihandler.sendMessage(message);
 
             }
 
             @Override
             public void onFailed(String e) {
-                Message message=new Message();
-                message.what=4302;
-                message.obj=e;
+                Message message = new Message();
+                message.what = 4302;
+                message.obj = e;
                 uihandler.sendMessage(message);
             }
         });
         jsoup.start();
-        Chronometer chronometer=findViewById(R.id.played_time);
+        Chronometer chronometer = findViewById(R.id.played_time);
         chronometer.setFormat("计时时间：(%s)");
         chronometer.start();
-
+           showbanner(guanggao);
     }
 
+    @OnClick(R.id.guanggao)
+    public void onViewClicked() {
+    }
 }

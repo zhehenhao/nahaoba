@@ -37,6 +37,7 @@ public class PictureWebActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_picture_web);
         ButterKnife.bind(this);
+        showbanner(guanggao);
     }
 
     @OnClick({R.id.tupian1, R.id.tupian2, R.id.tupian3, R.id.banner, R.id.tupian4, R.id.tupian5, R.id.tupian6})

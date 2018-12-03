@@ -25,7 +25,7 @@
         android:theme="@style/AppTheme">
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-8009231742178376~7222471675"/>
+            android:value="ca-app-pub-8009231742178376~7222471675" />
 
         <!-- <meta-data -->
         <!-- android:name=".utils.GlideCache" -->
@@ -177,7 +177,26 @@
         <activity
             android:name=".text.TxtContentActivity"
             android:label="@string/title_activity_txt_content"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".X5.VipVideoActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:label="@string/title_activity_vip_video"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <activity
+            android:name="com.tencent.smtt.sdk.VideoActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:alwaysRetainTaskState="true">
+            <intent-filter>
+                <action android:name="com.tencent.smtt.tbs.video.PLAY" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+        </activity>
     </application>
 
 </manifest>

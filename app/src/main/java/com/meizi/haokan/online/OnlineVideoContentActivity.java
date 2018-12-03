@@ -100,6 +100,7 @@ public  class OnlineVideoContentActivity extends BaseActivity {
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         requestdata();
+        showbanner(guanggao);
     }
 
   private void  requestdata() {

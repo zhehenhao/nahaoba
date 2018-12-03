@@ -36,6 +36,7 @@ public class TextWebActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_text_web);
         ButterKnife.bind(this);
+        showbanner(guanggao);
     }
 
     @OnClick({R.id.guanggao, R.id.textweb1, R.id.textweb2, R.id.textweb3, R.id.banner, R.id.textweb4, R.id.textweb5, R.id.textweb6})

@@ -81,6 +81,7 @@ public  class MainActivity extends BaseActivity {
                return true;
            }
        });
+       showbanner(guanggao);
     }
 
     @OnClick({R.id.guanggao, R.id.xfqu, R.id.kbqu, R.id.tpqu, R.id.lsjl, R.id.search

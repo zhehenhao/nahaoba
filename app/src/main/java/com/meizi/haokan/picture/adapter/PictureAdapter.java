@@ -48,7 +48,7 @@ public class PictureAdapter extends RecyclerView.Adapter<PictureAdapter.PictureV
         holder.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ToastUtils.showLong("点击了"+position);
+//                ToastUtils.showLong("点击了"+position);
            showpicture(position,picture.getTitle());
            if(picture.getImg().contains("meizitu")){
                GirlService.start(mcontext,pictures);

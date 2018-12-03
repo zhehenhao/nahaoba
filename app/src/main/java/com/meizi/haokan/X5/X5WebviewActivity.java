@@ -64,7 +64,10 @@ public class X5WebviewActivity extends BaseActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                VipVideoActivity.showvipvideo(context,x5WebView.getUrl());
+//
+                Intent intent=new Intent(X5WebviewActivity.this,VipVideoActivity.class);
+                intent.putExtra("videourl",x5WebView.getUrl());
+                startActivity(intent);
             }
         });
 
@@ -160,58 +163,4 @@ public class X5WebviewActivity extends BaseActivity
         return true;
     }
 
-
-//
-//     case R.id.jie1:
-//    setjiekou(1);
-//        break;
-//    case R.id.jie2:
-//    setjiekou(2);
-//        break;
-//    case R.id.jie3:
-//    setjiekou(3);
-//        break;
-//    case R.id.jie4:
-//    setjiekou(4);
-//        break;
-//    case R.id.jie5:
-//    setjiekou(5);
-//        break;
-//    case R.id.jie6:
-//    setjiekou(6);
-//        break;
-//    case R.id.jie7:
-//    setjiekou(7);
-//        break;
-//    case R.id.jie8:
-//    setjiekou(8);
-//        break;
-//    case R.id.jie9:
-//    setjiekou(9);
-//        break;
-//    case R.id.jie10:
-//    setjiekou(10);
-//        break;
-//    case R.id.jie11:
-//    setjiekou(11);
-//        break;
-//    case R.id.jie12:
-//    setjiekou(12);
-//        break;
-//    case R.id.jie13:
-//    setjiekou(13);
-//
-//        break;
-//    case R.id.jie14:
-//    setjiekou(14);
-//        break;
-//    case R.id.jie15:
-//    setjiekou(15);
-//        break;
-//    case R.id.jie16:
-//    setjiekou(16);
-//        break;
-//    case R.id.jie17:
-//    setjiekou(17);
-//        break;
 }

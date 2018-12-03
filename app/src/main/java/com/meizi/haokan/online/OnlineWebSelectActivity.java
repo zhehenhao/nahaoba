@@ -7,13 +7,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
+import com.meizi.haokan.Base.BaseActivity;
 import com.meizi.haokan.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class OnlineWebSelectActivity extends AppCompatActivity {
+public class OnlineWebSelectActivity extends BaseActivity {
 
     @BindView(R.id.guanggao)
     LinearLayout guanggao;
@@ -37,6 +38,7 @@ public class OnlineWebSelectActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_online);
         ButterKnife.bind(this);
+        showbanner(guanggao);
     }
 
     @OnClick({R.id.guanggao, R.id.onlineweb1, R.id.onlineweb2, R.id.onlineweb3, R.id.banner, R.id.onlineweb4, R.id.onlineweb5, R.id.onlineweb6})
