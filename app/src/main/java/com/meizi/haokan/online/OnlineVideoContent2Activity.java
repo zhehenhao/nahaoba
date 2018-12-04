@@ -108,8 +108,6 @@ public class OnlineVideoContent2Activity extends BaseActivity {
      tvtitle.setText(title);
         ImageLoaderUtils.display(this,imageView3,img);
         requestdata();
-
-
     }
 
     private void requestdata() {
