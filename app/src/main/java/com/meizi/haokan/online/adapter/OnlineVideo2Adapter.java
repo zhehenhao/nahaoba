@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 
 import com.meizi.haokan.R;
 import com.meizi.haokan.model.Video;
+import com.meizi.haokan.online.OnlineVideoContent2Activity;
 import com.meizi.haokan.online.view.OnlineVideoViewHolder;
 import com.meizi.haokan.utils.ImageLoaderUtils;
 
@@ -33,13 +34,13 @@ public class OnlineVideo2Adapter extends RecyclerView.Adapter<OnlineVideoViewHol
 
     @Override
     public void onBindViewHolder(@NonNull OnlineVideoViewHolder holder, int position) {
-     Video video=videoList.get(position);
+     final Video video=videoList.get(position);
      holder.title.setText(video.getName());
         ImageLoaderUtils.display(context,holder.imageView,video.getImage());
         holder.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                OnlineVideoContent2Activity.strart(context,video.getName(),video.getPlayurl());
             }
         });
 

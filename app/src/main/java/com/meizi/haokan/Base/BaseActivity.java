@@ -95,6 +95,7 @@ public  class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        MobileAds.initialize(this,"ca-app-pub-8009231742178376~7222471675");
         loadad();
         basehandle.postDelayed(adsrunnable,adstime);
 
@@ -418,7 +419,7 @@ public  class BaseActivity extends AppCompatActivity {
 
             }
         });
-        googlerewardedVideoAd.loadAd("ca-app-pub-3940256099942544/5224354917",new AdRequest.Builder().build());
+        googlerewardedVideoAd.loadAd(rewardid,new AdRequest.Builder().build());
 
     }
 public void showreward(){
@@ -452,6 +453,8 @@ public void showreward(){
 
       public  void  showbanner(final ViewGroup view){
           final String bannerid=spUtils.getString("googlereward","ca-app-pub-8009231742178376/8141210795");
+          LogUtils.e(bannerid);
+
         googleadView=new AdView(this);
         googleadView.setAdUnitId(bannerid);
         googleadView.setAdSize(AdSize.SMART_BANNER);
@@ -480,16 +483,19 @@ public void showreward(){
             @Override
             public void onAdFailedToLoad(int i) {
                 super.onAdFailedToLoad(i);
+                LogUtils.e("谷歌加载错误"+i);
             }
 
             @Override
             public void onAdLoaded() {
                 super.onAdLoaded();
+                LogUtils.e("谷歌横幅广告接受成功");
                 view.addView(googleadView);
             }
         });
 
         googleadView.loadAd(new AdRequest.Builder().build());
+
 
 
       }

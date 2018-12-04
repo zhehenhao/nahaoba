@@ -13,7 +13,7 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         Utils.init(this);
-        MobileAds.initialize(this,"ca-app-pub-8009231742178376~7222471675");
+//        MobileAds.initialize(this);
 //         initRealm();
         QbSdk.PreInitCallback cb = new QbSdk.PreInitCallback() {
 

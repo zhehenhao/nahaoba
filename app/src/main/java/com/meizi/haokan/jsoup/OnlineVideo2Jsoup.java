@@ -1,5 +1,6 @@
 package com.meizi.haokan.jsoup;
 
+import com.blankj.utilcode.util.LogUtils;
 import com.meizi.haokan.listener.FindOnlineVideo2Listener;
 import com.meizi.haokan.listener.FindVideoListener;
 import com.meizi.haokan.model.Video;
@@ -31,10 +32,16 @@ private FindOnlineVideo2Listener findOnlineVideo2Listener;
         Document doc=null;
         try{
             doc=getRequestAddHeader(url);
+//            LogUtils.e(doc.toString());
             if(doc!=null){
-                Elements es=doc.select("#player_html5_api > source");
+                Elements es=doc.select("source");
+                if(es.size()==0){
+                    LogUtils.e("没有抓取到可播放的视频资源");
+                }
                 for (Element e:es){
+                    LogUtils.e(e.toString());
                     String videourl=e.attr("src");
+                    LogUtils.e(videourl);
                     String label=e.attr("label");
                     String type=e.attr("type");
                     OnlineVideo2 video2=new OnlineVideo2();
@@ -43,7 +50,6 @@ private FindOnlineVideo2Listener findOnlineVideo2Listener;
                     video2.setType(type);
                     findOnlineVideo2Listener.onSimpleSucceed(video2);
                     video2s.add(video2);
-
                 }
                 if(video2s.size()>0){
                     findOnlineVideo2Listener.onSucceed(video2s);

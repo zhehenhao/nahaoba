@@ -85,7 +85,7 @@ private int webtype;
 
         for (int i=0;i<titles.length;i++){
             tabLayout.addTab(tabLayout.newTab().setText(titles[i]));
-            OnlineViewlist2Fragment fragment=new OnlineViewlist2Fragment();
+            OnlineViewlist2Fragment fragment=OnlineViewlist2Fragment.newInstance(titles[i]);
             fragmentList.add(fragment);
         }
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());

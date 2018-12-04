@@ -48,7 +48,8 @@
                         android:id="@+id/kbqu"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="快播区" />
+                        android:text="快播区"
+                        android:visibility="gone" />
 
                     <Button
                         android:id="@+id/tpqu"
@@ -60,7 +61,8 @@
                         android:id="@+id/lsjl"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="历史记录" />
+                        android:text="历史记录"
+                        android:visibility="gone" />
 
                     <Button
                         android:id="@+id/search"
@@ -103,7 +105,8 @@
                         android:id="@+id/xgqu"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="西瓜区" />
+                        android:text="西瓜区"
+                        android:visibility="gone" />
 
                     <Button
                         android:id="@+id/zxqu"
@@ -121,7 +124,8 @@
                         android:id="@+id/wdsc"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="我的收藏" />
+                        android:text="我的收藏"
+                        android:visibility="gone" />
 
                     <Button
                         android:id="@+id/qchc"

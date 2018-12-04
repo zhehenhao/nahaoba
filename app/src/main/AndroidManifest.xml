@@ -144,7 +144,7 @@
 
         <activity
             android:name=".X5.X5WebviewActivity"
-            android:label="@string/title_activity_x5_webview"
+
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -55,23 +55,24 @@ public class OnlineVideoContent2Activity extends BaseActivity {
     };
 
     private void addbutton(OnlineVideo2 obj) {
-  final  Button button=new Button(this);
-  button.setTag(obj.getVideourl());
-  button.setText("播放视频"+obj.getLabel());
-  button.setBackgroundColor(Color.YELLOW);
-  button.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-          String videourl= (String) v.getTag();
-          ToastUtils.showLong("播放视频"+videourl);
-          setClipText(videourl);
-          playvideo(videourl);
-      }
-  });
+//  final  Button button=new Button(this);
+//  button.setTag(obj.getVideourl());
+//  button.setText("本地下载视频"+obj.getLabel());
+//  button.setBackgroundColor(Color.YELLOW);
+//  button.setOnClickListener(new View.OnClickListener() {
+//      @Override
+//      public void onClick(View v) {
+//          String videourl= (String) v.getTag();
+//          ToastUtils.showLong("播放视频"+videourl);
+//          setClipText(videourl);
+//          playvideo(videourl);
+//      }
+//  });
+//  buttonlinear.addView(button);
         final  Button button1=new Button(this);
         button1.setTag(obj.getVideourl());
         button1.setText("复制链接"+obj.getLabel());
-        button.setBackgroundColor(Color.BLUE);
+        button1.setBackgroundColor(Color.BLUE);
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -81,7 +82,7 @@ public class OnlineVideoContent2Activity extends BaseActivity {
 
             }
         });
-
+        buttonlinear.addView(button1);
     }
 
     private String title;
@@ -108,6 +109,7 @@ public class OnlineVideoContent2Activity extends BaseActivity {
      tvtitle.setText(title);
         ImageLoaderUtils.display(this,imageView3,img);
         requestdata();
+        showbanner(guanggao);
     }
 
     private void requestdata() {
@@ -123,6 +125,7 @@ public class OnlineVideoContent2Activity extends BaseActivity {
 
             @Override
             public void onSimpleSucceed(OnlineVideo2 video2) {
+
                 Message message = new Message();
                 message.what = 4702;
                 message.obj = video2;
